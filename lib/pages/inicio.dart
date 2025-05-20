@@ -18,7 +18,7 @@ class _InicioState extends State<Inicio> {
 
   buildStack() {
     return Stack(
-      // Widget Stack utilizada para colocar elementos sobrepostos, no caso, a elementos sobrepostos na imagem de fundo
+      // Widget Stack utilizada para colocar elementos sobrepostos, no caso, a elementos sobrepostos na imagem de fundo.
       children: [
         Image.asset(
           "assets/tela_inicial_fundo.png",
