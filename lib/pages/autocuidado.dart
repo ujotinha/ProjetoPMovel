@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 
 class Autocuidado extends StatefulWidget {
@@ -8,6 +10,7 @@ class Autocuidado extends StatefulWidget {
 }
 
 class _AutocuidadoState extends State<Autocuidado> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,8 +18,28 @@ class _AutocuidadoState extends State<Autocuidado> {
           backgroundColor: Color(0xFFe7ddc9),
           appBar: buildAppBar(),
           body: buildBody(),
-      //bottomNavigationBar: ,
-    ));
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            backgroundColor: Color(0xFFc77b44),
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.white,
+            selectedLabelStyle: TextStyle(fontSize: 10),
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(icon: Icon(Icons.heart_broken), label: "Autocuidado"),
+              BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Pesquisa'),
+              BottomNavigationBarItem(icon: Icon(Icons.people_alt), label: 'Pacientes'),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
+            ],
+          ),
+        )
+    );
   }
 
   buildAppBar() {
@@ -29,31 +52,61 @@ class _AutocuidadoState extends State<Autocuidado> {
         ),
       ),
       centerTitle: false,
-      title: Image.asset("assets/logo.png", height: 50, width: 110),
+      title: Image.asset("assets/logo.png", height: 40, width: 70),
       actions: [
-        Icon(Icons.person)
+        Icon(
+          Icons.person,
+          color: Color(0xFFc77b44),
+        )
       ],
     );
   }
 
   buildBody() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(10.0),
       child: Container(
-        color: Color(0xFFf0e6d4),
-        width: double.infinity,
-        height: 400,
+        width: 350,
+        height: 500,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color(0xFFf0e6d4)),
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: ListView(
+
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 30, right: 30, top: 20),
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(color: Color(0xFFc77b44), borderRadius: BorderRadius.circular(12)),
+                  height: 35,
+                  child: Text("Registre seu humor diário", style: TextStyle(color: Color(0xFFdfceb4), fontSize: 14),),
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 50, right: 50),
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(color: Color(0xFFdfceb4), borderRadius: BorderRadius.circular(12)),
+                  height: 30,
+                  child: Row(
+                    children: [],
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Row(),
+                  Row()
+                ],
+              )
+            ],
+          ),
+        ),
       ),
-    );
-  }
-  buildBottomNavigationBar(){
-    return BottomNavigationBar(
-      backgroundColor: Color(0xFFc77b44),
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.abc), label: 'Inbox'),
-        BottomNavigationBarItem(icon: Icon(Icons.abc), label: 'Inbox'),
-        BottomNavigationBarItem(icon: Icon(Icons.abc), label: 'Inbox')
-      ],
     );
   }
 }
