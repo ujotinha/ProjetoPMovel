@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class Autocuidado extends StatefulWidget {
@@ -15,31 +13,32 @@ class _AutocuidadoState extends State<Autocuidado> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Color(0xFFe7ddc9),
-          appBar: buildAppBar(),
-          body: buildBody(),
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            backgroundColor: Color(0xFFc77b44),
-            unselectedItemColor: Colors.white,
-            selectedItemColor: Colors.white,
-            selectedLabelStyle: TextStyle(fontSize: 10),
-            showUnselectedLabels: false,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.heart_broken), label: "Autocuidado"),
-              BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Pesquisa'),
-              BottomNavigationBarItem(icon: Icon(Icons.people_alt), label: 'Pacientes'),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
-            ],
-          ),
-        )
-    );
+      backgroundColor: Color(0xFFe7ddc9),
+      appBar: buildAppBar(),
+      body: buildBody(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        backgroundColor: Color(0xFFc77b44),
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.white,
+        selectedLabelStyle: TextStyle(fontSize: 10),
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.heart_broken), label: "Autocuidado"),
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Pesquisa'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.people_alt), label: 'Pacientes'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
+        ],
+      ),
+    ));
   }
 
   buildAppBar() {
@@ -47,15 +46,16 @@ class _AutocuidadoState extends State<Autocuidado> {
       backgroundColor: Color(0xFFe0d4bd),
       shape: ContinuousRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(90.0),
-          bottomRight: Radius.circular(90.0),
+          bottomLeft: Radius.circular(30.0),
+          bottomRight: Radius.circular(30.0),
         ),
       ),
       centerTitle: false,
       title: Image.asset("assets/logo.png", height: 40, width: 70),
       actions: [
-        Icon(
-          Icons.person,
+        IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.person),
           color: Color(0xFFc77b44),
         )
       ],
@@ -68,19 +68,24 @@ class _AutocuidadoState extends State<Autocuidado> {
       child: Container(
         width: 350,
         height: 500,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Color(0xFFf0e6d4)),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10), color: Color(0xFFf0e6d4)),
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: ListView(
-
             children: [
               Container(
                 padding: EdgeInsets.only(left: 30, right: 30, top: 20),
                 child: Container(
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Color(0xFFc77b44), borderRadius: BorderRadius.circular(12)),
+                  decoration: BoxDecoration(
+                      color: Color(0xFFc77b44),
+                      borderRadius: BorderRadius.circular(12)),
                   height: 35,
-                  child: Text("Registre seu humor diário", style: TextStyle(color: Color(0xFFdfceb4), fontSize: 14),),
+                  child: Text(
+                    "Registre seu humor diário",
+                    style: TextStyle(color: Color(0xFFdfceb4), fontSize: 20),
+                  ),
                 ),
               ),
               SizedBox(
@@ -90,16 +95,58 @@ class _AutocuidadoState extends State<Autocuidado> {
                 padding: EdgeInsets.only(left: 50, right: 50),
                 child: Container(
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Color(0xFFdfceb4), borderRadius: BorderRadius.circular(12)),
+                  decoration: BoxDecoration(
+                      color: Color(0xFFdfceb4),
+                      borderRadius: BorderRadius.circular(12)),
                   height: 30,
                   child: Row(
-                    children: [],
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.alarm),
+                          iconSize: 20),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.alarm),
+                          iconSize: 20),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.alarm),
+                          iconSize: 20),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.alarm),
+                          iconSize: 20),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.alarm),
+                          iconSize: 20),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.alarm),
+                          iconSize: 20)
+                    ],
                   ),
                 ),
               ),
               Column(
                 children: [
-                  Row(),
+                  Row(
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFdfceb4)),
+                          child: Column(
+                            children: [
+                              Text("Meu Humor"),
+                              Text("Acompanhe como você se sentiu ao longo do mês. Um registro visual do seu emocional.")
+                            ],
+                          )
+                      ),
+
+                    ],
+                  ),
                   Row()
                 ],
               )
