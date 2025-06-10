@@ -48,7 +48,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
           children: [
             Row(
               children: [
-                IconButton(onPressed: () {}, icon:  Icon(Icons.arrow_back_ios), color: Color(0xFFc77b44),),
+                IconButton(onPressed: () {}, icon:  Icon(Icons.chevron_left), color: Color(0xFFc77b44), iconSize: 30, ),
                 Text("Medicamentos", style: TextStyle(color: Color(0xFFa5591f), fontSize: 18))
               ],
             ),
@@ -68,16 +68,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
                       Row(
                         children: [
                           Text("Todos os dias", style: TextStyle(fontSize: 10, color: Color(0xFF7b4a28)),),
-                          Switch(
-                            value: light,
-                            onChanged: (bool value){
-                              setState(() {
-                                light = value;
-                              });
-                            },
-                            activeColor: Color(0xFFa5591f),
-                          )
-
+                          IconButton(onPressed: () {}, icon:  Icon(Icons.toggle_on), color: Color(0xFFa5591f), iconSize: 32,),
                         ],
                       )
                     ],
@@ -94,24 +85,15 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Erlotinibe", style: TextStyle(color: Color(0xFF7b4a28))),
+                  Text("Gefitinibe", style: TextStyle(color: Color(0xFF7b4a28))),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("08:00", style: TextStyle(fontSize: 20, color: Color(0xFF7b4a28)),),
+                      Text("10:00", style: TextStyle(fontSize: 20, color: Color(0xFF7b4a28)),),
                       Row(
                         children: [
                           Text("Todos os dias", style: TextStyle(fontSize: 10, color: Color(0xFF7b4a28)),),
-                          Switch(
-                            value: light,
-                            onChanged: (bool value){
-                              setState(() {
-                                light = value;
-                              });
-                            },
-                            activeColor: Color(0xFFa5591f),
-                          )
-
+                          IconButton(onPressed: () {}, icon:  Icon(Icons.toggle_on), color: Color(0xFFa5591f), iconSize: 32,),
                         ],
                       )
                     ],
