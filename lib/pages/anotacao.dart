@@ -89,7 +89,7 @@ buildbody(){
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Título da nota", textAlign: TextAlign.justify, style: TextStyle(fontSize: 23, color: Color(0xFF834d30))),
-                    Text("Escreva seu registro aqui...", textAlign: TextAlign.justify, style: TextStyle(fontSize: 13, color: Color(0xFF834d30))),
+                    Text("Escreva seu registro aqui....", textAlign: TextAlign.justify, style: TextStyle(fontSize: 13, color: Color(0xFF834d30))),
 
 
                   ],
