@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Habitos extends StatefulWidget {
@@ -43,41 +45,97 @@ class _HabitosState extends State<Habitos> {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
-        padding: EdgeInsets.all(50),
-        color: Color(0xFFf0e6d4),
+        padding: EdgeInsets.all(30),
         width: double.infinity,
         height: 650,
+        decoration: BoxDecoration(color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+          Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Container(
-              color: Color(0xFFdfceb4),
-              width: 300,
-              height: 200,
+              width: 150,
+              height: 20,
+              decoration: BoxDecoration(color: Color(0xFFca876d), borderRadius: BorderRadius.circular(20)),
+              child: Row(
+                children: [
+                  Icon(Icons.paid, color: Colors.white),
+                  Text("0,00 | Nível 1", style: TextStyle( color: Colors.white )),
+                ],
+              ),
+            ),
+            ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 120,
+                  height: 30,
+                  decoration: BoxDecoration(color: Color(0xFFca876d), borderRadius: BorderRadius.circular(20)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Ana", style: TextStyle( color: Colors.white )),
+
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 300,
+                  height: 200,
+                  decoration: BoxDecoration(color: Color(0xFFdfceb4), borderRadius: BorderRadius.circular(10)),
+                ),
+              ],
             ),
             SizedBox(
               height: 40,
             ),
             Container(
-              color: Color(0xFFca876d),
-              width: 180,
-              height: 30,
+              width: 140,
+              height: 40,
+              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(10)),
+              child: Row(
+              children: [
+                Icon(Icons.assignment, color: Colors.white),
+                Text("Missão Diária", style: TextStyle( color: Colors.white )),
+              ],
+            ),
+
             ),
             SizedBox(
               height: 20,
             ),
             Container(
-              color: Color(0xFFca876d),
-              width: 180,
-              height: 30,
+              width: 140,
+              height: 40,
+              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                children: [
+                  Icon(Icons.shopping_cart, color: Colors.white),
+                  Text("Visite a lojinha", style: TextStyle( color: Colors.white )),
+                ],
+              ),
             ),
             SizedBox(
               height: 20,
             ),
             Container(
-              color: Color(0xFFca876d),
-              width: 180,
-              height: 30,
+              width: 140,
+              height: 40,
+              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                children: [
+                  Icon(Icons.medication, color: Colors.white),
+                  Text("Medicamentos", style: TextStyle( color: Colors.white )),
+                ],
+              ),
             ),
 
           ],
@@ -107,7 +165,7 @@ class _HabitosState extends State<Habitos> {
           label: ' ',
         ),
         BottomNavigationBarItem(
-          icon:Icon(Icons.menu_book),
+            icon:Icon(Icons.menu_book),
           label: ' '
         ),
         BottomNavigationBarItem(
