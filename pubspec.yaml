@@ -62,6 +62,7 @@ flutter:
   assets:
     - assets/tela_inicial_fundo.png
     - assets/logo.png
+    - assets/foto_perfil.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

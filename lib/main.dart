@@ -7,6 +7,6 @@ import 'package:projetointheirskin/pages/inicio.dart';
 
 void main() {
 
-  runApp(MaterialApp(home:Anotacao()));
+  runApp(MaterialApp(home:Habitos()));
 
 }
