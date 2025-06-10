@@ -31,11 +31,13 @@ class _AutocuidadoState extends State<Autocuidado> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.heart_broken), label: "Autocuidado"),
-          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Pesquisa'),
+              icon: Icon(Icons.favorite), label: "Autocuidado"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.people_alt), label: 'Pacientes'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
+              icon: Icon(Icons.menu_book), label: 'Pesquisa'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.groups), label: 'Pacientes'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: 'Personagem')
         ],
       ),
     ));
@@ -55,7 +57,7 @@ class _AutocuidadoState extends State<Autocuidado> {
       actions: [
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.person),
+          icon: Icon(Icons.account_circle),
           color: Color(0xFFc77b44),
         )
       ],
@@ -118,36 +120,101 @@ class _AutocuidadoState extends State<Autocuidado> {
                           onPressed: () {},
                           icon: Icon(Icons.alarm),
                           iconSize: 20),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.alarm),
-                          iconSize: 20),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.alarm),
-                          iconSize: 20)
                     ],
                   ),
                 ),
               ),
               Column(
                 children: [
+                  SizedBox(height: 10),
                   Row(
                     children: [
-                      ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFdfceb4)),
-                          child: Column(
-                            children: [
-                              Text("Meu Humor"),
-                              Text("Acompanhe como você se sentiu ao longo do mês. Um registro visual do seu emocional.")
-                            ],
-                          )
+                      SizedBox( // botão Meu Humor
+                        height: 80,
+                        width: 155,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFdfceb4),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)
+                                )
+                            ),
+                            child: Column(
+                              children: [
+                                Text("Meu Humor", style: TextStyle(color: Color(0xFFa5591f))),
+                                Text("Acompanhe como você se sentiu ao longo do mês. Um registro visual do seu emocional.", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                              ],
+                            )
+                        ),
                       ),
+                      SizedBox(width: 10), //
+                      SizedBox( // botão Meus Habitos
+                        height: 80,
+                        width: 155,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFdfceb4),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)
+                                )
+                            ),
+                            child: Column(
+                              children: [
+                                Text("Meus Hábitos", style: TextStyle(color: Color(0xFFa5591f))),
+                                Text("Cuide de você no seu ritmo: hábitos diários, lembretes e medicamentos", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                              ],
+                            )
+                        ),
+                      )
 
                     ],
                   ),
-                  Row()
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      SizedBox( // botão meu diário
+                        height: 80,
+                        width: 155,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFdfceb4),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)
+                                )
+                            ),
+                            child: Column(
+                              children: [
+                                Text("Meu Diário", style: TextStyle(color: Color(0xFFa5591f)),),
+                                Text("Um cantinho só seu para escrever, refletir e se escutar com calma.", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                              ],
+                            )
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      SizedBox( // botão Amigo Virtual
+                        height: 80,
+                        width: 155,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFdfceb4),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)
+                                )
+                            ),
+                            child: Column(
+                              children: [
+                                Text("Amigo Virtual", style: TextStyle(color: Color(0xFFa5591f)),),
+                                Text("Seu companheiro digital pra te acolher e caminhar com você.", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                              ],
+                            )
+                        ),
+                      )
+                    ],
+                  )
                 ],
               )
             ],
