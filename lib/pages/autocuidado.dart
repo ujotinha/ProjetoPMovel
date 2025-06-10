@@ -13,34 +13,32 @@ class _AutocuidadoState extends State<Autocuidado> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xFFe7ddc9),
-      appBar: buildAppBar(),
-      body: buildBody(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-        backgroundColor: Color(0xFFc77b44),
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.white,
-        selectedLabelStyle: TextStyle(fontSize: 10),
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label: "Autocuidado"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book), label: 'Pesquisa'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.groups), label: 'Pacientes'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'Personagem')
-        ],
-      ),
-    ));
+          backgroundColor: Color(0xFFe7ddc9),
+          appBar: buildAppBar(),
+          body: buildBody(),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            backgroundColor: Color(0xFFc77b44),
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.white,
+            selectedLabelStyle: TextStyle(fontSize: 10),
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite), label: "Autocuidado"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.menu_book), label: 'Pesquisa'),
+              BottomNavigationBarItem(icon: Icon(Icons.groups), label: 'Pacientes'),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
+            ],
+          ),
+        ));
   }
 
   buildAppBar() {
@@ -68,8 +66,8 @@ class _AutocuidadoState extends State<Autocuidado> {
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: Container(
-        width: 350,
-        height: 500,
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), color: Color(0xFFf0e6d4)),
         child: Padding(
@@ -106,20 +104,41 @@ class _AutocuidadoState extends State<Autocuidado> {
                     children: [
                       IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.alarm),
+                          icon: Icon(
+                            Icons.sentiment_very_satisfied,
+                            color: Color(0xFFa98765),
+                          ),
                           iconSize: 20),
                       IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.alarm),
+                          icon: Icon(
+                            Icons.sentiment_satisfied_alt_outlined,
+                            color: Color(0xFFa98765),
+                          ),
                           iconSize: 20),
                       IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.alarm),
+                          icon: Icon(
+                            Icons.sentiment_neutral,
+                            color: Color(0xFFa98765),
+                          ),
                           iconSize: 20),
                       IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.alarm),
+                          icon: Icon(
+                            Icons.sentiment_dissatisfied_outlined,
+                            color: Color(0xFFa98765),
+                          ),
                           iconSize: 20),
+                      IconButton(
+                        onPressed: () {},
+                        // icon: Icon( color: Color(0xFFa98765)),
+                        icon: Icon(
+                          Icons.sentiment_neutral_outlined,
+                          color: Color(0xFFa98765),
+                          size: 20,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -128,8 +147,10 @@ class _AutocuidadoState extends State<Autocuidado> {
                 children: [
                   SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox( // botão Meu Humor
+                      SizedBox(
+                        // botão Meu Humor
                         height: 80,
                         width: 155,
                         child: ElevatedButton(
@@ -137,19 +158,21 @@ class _AutocuidadoState extends State<Autocuidado> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFFdfceb4),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0)
-                                )
-                            ),
+                                    borderRadius: BorderRadius.circular(10.0))),
                             child: Column(
                               children: [
-                                Text("Meu Humor", style: TextStyle(color: Color(0xFFa5591f))),
-                                Text("Acompanhe como você se sentiu ao longo do mês. Um registro visual do seu emocional.", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                                Text("Meu Humor",
+                                    style: TextStyle(color: Color(0xFFa5591f))),
+                                Text(
+                                  "Acompanhe como você se sentiu ao longo do mês. Um registro visual do seu emocional.",
+                                  style: TextStyle(
+                                      fontSize: 9, color: Color(0xFFa5591f)),
+                                )
                               ],
-                            )
-                        ),
-                      ),
-                      SizedBox(width: 10), //
-                      SizedBox( // botão Meus Habitos
+                            )),
+                      ), //
+                      SizedBox(
+                        // botão Meus Habitos
                         height: 80,
                         width: 155,
                         child: ElevatedButton(
@@ -157,24 +180,27 @@ class _AutocuidadoState extends State<Autocuidado> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFFdfceb4),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0)
-                                )
-                            ),
+                                    borderRadius: BorderRadius.circular(10.0))),
                             child: Column(
                               children: [
-                                Text("Meus Hábitos", style: TextStyle(color: Color(0xFFa5591f))),
-                                Text("Cuide de você no seu ritmo: hábitos diários, lembretes e medicamentos", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                                Text("Meus Hábitos",
+                                    style: TextStyle(color: Color(0xFFa5591f))),
+                                Text(
+                                  "Cuide de você no seu ritmo: hábitos diários, lembretes e medicamentos",
+                                  style: TextStyle(
+                                      fontSize: 9, color: Color(0xFFa5591f)),
+                                )
                               ],
-                            )
-                        ),
+                            )),
                       )
-
                     ],
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox( // botão meu diário
+                      SizedBox(
+                        // botão meu diário
                         height: 80,
                         width: 155,
                         child: ElevatedButton(
@@ -182,19 +208,23 @@ class _AutocuidadoState extends State<Autocuidado> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFFdfceb4),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0)
-                                )
-                            ),
+                                    borderRadius: BorderRadius.circular(10.0))),
                             child: Column(
                               children: [
-                                Text("Meu Diário", style: TextStyle(color: Color(0xFFa5591f)),),
-                                Text("Um cantinho só seu para escrever, refletir e se escutar com calma.", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                                Text(
+                                  "Meu Diário",
+                                  style: TextStyle(color: Color(0xFFa5591f)),
+                                ),
+                                Text(
+                                  "Um cantinho só seu para escrever, refletir e se escutar com calma.",
+                                  style: TextStyle(
+                                      fontSize: 9, color: Color(0xFFa5591f)),
+                                )
                               ],
-                            )
-                        ),
+                            )),
                       ),
-                      SizedBox(width: 10),
-                      SizedBox( // botão Amigo Virtual
+                      SizedBox(
+                        // botão Amigo Virtual
                         height: 80,
                         width: 155,
                         child: ElevatedButton(
@@ -202,16 +232,20 @@ class _AutocuidadoState extends State<Autocuidado> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFFdfceb4),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0)
-                                )
-                            ),
+                                    borderRadius: BorderRadius.circular(10.0))),
                             child: Column(
                               children: [
-                                Text("Amigo Virtual", style: TextStyle(color: Color(0xFFa5591f)),),
-                                Text("Seu companheiro digital pra te acolher e caminhar com você.", style: TextStyle(fontSize: 9, color: Color(0xFFa5591f)),)
+                                Text(
+                                  "Amigo Virtual",
+                                  style: TextStyle(color: Color(0xFFa5591f)),
+                                ),
+                                Text(
+                                  "Seu companheiro digital pra te acolher e caminhar com você.",
+                                  style: TextStyle(
+                                      fontSize: 9, color: Color(0xFFa5591f)),
+                                )
                               ],
-                            )
-                        ),
+                            )),
                       )
                     ],
                   )
