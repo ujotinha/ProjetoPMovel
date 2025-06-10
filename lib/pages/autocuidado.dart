@@ -134,10 +134,10 @@ class _AutocuidadoState extends State<Autocuidado> {
                         onPressed: () {},
                         // icon: Icon( color: Color(0xFFa98765)),
                         icon: Icon(
-                          Icons.sentiment_neutral_outlined,
+                          Icons.sentiment_dissatisfied_sharp,
                           color: Color(0xFFa98765),
-                          size: 20,
                         ),
+                        iconSize: 20,
                       ),
                     ],
                   ),
