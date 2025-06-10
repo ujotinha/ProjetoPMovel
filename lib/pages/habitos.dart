@@ -26,8 +26,9 @@ class _HabitosState extends State<Habitos> {
   buildAppBar(){
     return AppBar(
       actions: [
-        Icon(
-            Icons.account_circle,
+        IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.account_circle),
             color: Color (0xFFc77b44),
         ),
       ],
@@ -38,6 +39,8 @@ class _HabitosState extends State<Habitos> {
           bottomRight: Radius.circular(90.0),
         ),
       ),
+      centerTitle: false,
+      title: Image.asset("assets/logo.png", height: 50, width: 110),
     );
   }
 
@@ -62,8 +65,8 @@ class _HabitosState extends State<Habitos> {
               decoration: BoxDecoration(color: Color(0xFFca876d), borderRadius: BorderRadius.circular(20)),
               child: Row(
                 children: [
-                  Icon(Icons.paid, color: Colors.white, size: 15,),
-                  Text("0,00 | Nível 1", style: TextStyle( color: Colors.white )),
+                  Icon(Icons.paid, color: Color (0xFFffe3d7), size: 15,),
+                  Text("0,00 | Nível 1", style: TextStyle( color: Color (0xFFffe3d7))),
                 ],
               ),
             ),
@@ -82,7 +85,7 @@ class _HabitosState extends State<Habitos> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Ana", style: TextStyle( color: Colors.white )),
+                      Text("Ana", style: TextStyle( color: Color (0xFFffe3d7))),
                     ],
                   ),
                 ),
@@ -94,7 +97,7 @@ class _HabitosState extends State<Habitos> {
                   child: Column(
                     children: [
                       CircleAvatar(
-                        backgroundImage: AssetImage("assets/foto_perfil.png"),
+                        backgroundImage: AssetImage("assets/perfil2.png"),
                         radius: 70,
                       ),
                       SizedBox(
@@ -107,7 +110,7 @@ class _HabitosState extends State<Habitos> {
                          child: Row(
                            mainAxisAlignment: MainAxisAlignment.center,
                            children: [
-                             Text("Personalize o seu Avatar", style: TextStyle( color: Colors.white )),
+                             Text("Personalize o seu Avatar", style: TextStyle( color: Color (0xFFffe3d7) )),
                            ],
                          ),
                        ),
@@ -120,13 +123,13 @@ class _HabitosState extends State<Habitos> {
               height: 40,
             ),
             Container(
-              width: 140,
+              width: 150,
               height: 40,
-              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(13)),
               child: Row(
               children: [
-                Icon(Icons.assignment, color: Colors.white, size: 25),
-                Text("Missão Diária", style: TextStyle( color: Colors.white )),
+                Icon(Icons.assignment, color: Color (0xFFffe3d7), size: 25),
+                Text("Missão Diária", style: TextStyle( color: Color (0xFFffe3d7) )),
               ],
             ),
 
@@ -135,13 +138,13 @@ class _HabitosState extends State<Habitos> {
               height: 20,
             ),
             Container(
-              width: 140,
+              width: 150,
               height: 40,
-              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(13)),
               child: Row(
                 children: [
-                  Icon(Icons.shopping_cart, color: Colors.white, size: 25),
-                  Text("Visite a lojinha", style: TextStyle( color: Colors.white )),
+                  Icon(Icons.shopping_cart, color: Color (0xFFffe3d7), size: 25),
+                  Text("Visite a lojinha", style: TextStyle( color: Color (0xFFffe3d7) )),
                 ],
               ),
             ),
@@ -149,13 +152,13 @@ class _HabitosState extends State<Habitos> {
               height: 20,
             ),
             Container(
-              width: 140,
+              width: 150,
               height: 40,
-              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(13)),
               child: Row(
                 children: [
-                  Icon(Icons.medication, color: Colors.white, size: 25),
-                  Text("Medicamentos", style: TextStyle( color: Colors.white )),
+                  Icon(Icons.medication, color: Color (0xFFffe3d7), size: 25),
+                  Text("Medicamentos", style: TextStyle( color: Color (0xFFffe3d7) )),
                 ],
               ),
             ),
@@ -177,7 +180,7 @@ class _HabitosState extends State<Habitos> {
         });
       },
       backgroundColor: Color (0xFFc77b44),
-      unselectedItemColor: Color(0xFF6C6C6C),
+      unselectedItemColor: Color(0xFFffffff),
       selectedItemColor: Color(0xFFffffff),
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
