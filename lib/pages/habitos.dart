@@ -50,7 +50,7 @@ class _HabitosState extends State<Habitos> {
       child: Container(
         padding: EdgeInsets.all(30),
         width: double.infinity,
-        height: 650,
+        height: 700,
         decoration: BoxDecoration(color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
 
         child: Column(
@@ -73,7 +73,7 @@ class _HabitosState extends State<Habitos> {
             ],
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -103,66 +103,99 @@ class _HabitosState extends State<Habitos> {
                       SizedBox(
                         height: 10,
                       ),
-                       Container(
-                         width: 180,
-                         height: 30,
-                       decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(10)),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.center,
-                           children: [
-                             Text("Personalize o seu Avatar", style: TextStyle( color: Color (0xFFffe3d7) )),
-                           ],
-                         ),
-                       ),
+                      SizedBox(
+                        width: 180,
+                        height: 30,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                backgroundColor: Color(0xFFca876d),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(13)
+                                )
+                            ),
+                            child: Row(
+                              children: [
+                                Text("Personalize o seu Avatar", style: TextStyle( color: Color (0xFFffe3d7) )),
+                              ],
+                            )
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: 40,
-            ),
-            Container(
-              width: 150,
-              height: 40,
-              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(13)),
-              child: Row(
-              children: [
-                Icon(Icons.assignment, color: Color (0xFFffe3d7), size: 25),
-                Text("Missão Diária", style: TextStyle( color: Color (0xFFffe3d7) )),
-              ],
-            ),
-
+              height: 30,
             ),
             SizedBox(
-              height: 20,
-            ),
-            Container(
               width: 150,
               height: 40,
-              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(13)),
-              child: Row(
-                children: [
-                  Icon(Icons.shopping_cart, color: Color (0xFFffe3d7), size: 25),
-                  Text("Visite a lojinha", style: TextStyle( color: Color (0xFFffe3d7) )),
-                ],
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.only(left: 12, right: 12),
+                      backgroundColor: Color(0xFFca876d),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(13)
+                    )
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.assignment, color: Color (0xFFffe3d7), size: 25),
+                      Text("Missão Diária", style: TextStyle( color: Color (0xFFffe3d7) )),
+                    ],
+                  )
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            SizedBox(
+              width: 150,
+              height: 40,
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.only(left: 12, right: 12),
+                      backgroundColor: Color(0xFFca876d),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(13)
+                      )
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.shopping_cart,color: Color (0xFFffe3d7), size: 25),
+                      Text("Visite a lojinha", style: TextStyle( color: Color (0xFFffe3d7) )),
+                    ],
+                  )
               ),
             ),
             SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
               width: 150,
               height: 40,
-              decoration: BoxDecoration(color: Color(0xFFca876d),borderRadius: BorderRadius.circular(13)),
-              child: Row(
-                children: [
-                  Icon(Icons.medication, color: Color (0xFFffe3d7), size: 25),
-                  Text("Medicamentos", style: TextStyle( color: Color (0xFFffe3d7) )),
-                ],
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.only(left: 12, right: 12),
+                      backgroundColor: Color(0xFFca876d),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(13)
+                      )
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.medication, color: Color (0xFFffe3d7), size: 25),
+                      Text("Medicamentos", style: TextStyle( color: Color (0xFFffe3d7) )),
+                    ],
+                  )
               ),
             ),
-
           ],
         ),
       ),
