@@ -56,22 +56,17 @@ class _HabitosState extends State<Habitos> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 150,
-              height: 20,
-              decoration: BoxDecoration(color: Color(0xFFca876d), borderRadius: BorderRadius.circular(20)),
-              child: Row(
-                children: [
-                  Icon(Icons.paid, color: Color (0xFFffe3d7), size: 15,),
-                  Text("0,00 | Nível 1", style: TextStyle( color: Color (0xFFffe3d7))),
-                ],
-              ),
+          Container(
+            width: 150,
+            height: 20,
+            decoration: BoxDecoration(color: Color(0xFFca876d), borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              children: [
+                Icon(Icons.paid, color: Color (0xFFffe3d7), size: 15,),
+                Text("0,00 | Nível 1", style: TextStyle( color: Color (0xFFffe3d7))),
+              ],
             ),
-            ],
-            ),
+          ),
             SizedBox(
               height: 30,
             ),
@@ -174,7 +169,7 @@ class _HabitosState extends State<Habitos> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             SizedBox(
               width: 150,
@@ -209,30 +204,30 @@ class _HabitosState extends State<Habitos> {
       onTap: (index) {
         setState(() {
           selectedIndex = index;
-          print(selectedIndex);
-        });
+        }
+        );
       },
       backgroundColor: Color (0xFFc77b44),
       unselectedItemColor: Color(0xFFffffff),
       selectedItemColor: Color(0xFFffffff),
-      showUnselectedLabels: true,
+      showUnselectedLabels: false,
       type: BottomNavigationBarType.fixed,
       items: [
         BottomNavigationBarItem(
           icon:Icon(Icons.favorite),
-          label: ' ',
+          label: 'Autocuidado',
         ),
         BottomNavigationBarItem(
             icon:Icon(Icons.menu_book),
-          label: ' '
+           label: 'Pesquisa'
         ),
         BottomNavigationBarItem(
           icon:Icon(Icons.groups),
-          label: ' '
+          label: 'Pacientes'
         ),
         BottomNavigationBarItem(
           icon:Icon(Icons.person),
-          label: ' Personagem '
+          label: 'Personagem'
         ),
       ],
     );
