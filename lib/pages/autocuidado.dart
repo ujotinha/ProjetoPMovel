@@ -38,7 +38,7 @@ class _AutocuidadoState extends State<Autocuidado> {
 
   buildBody() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(16.0),
       child: Container(
         color: Color(0xFFf0e6d4),
         width: double.infinity,
