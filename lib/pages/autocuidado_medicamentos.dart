@@ -8,7 +8,6 @@ class AutocuidadoMedicamentos extends StatefulWidget {
 }
 
 class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
-  bool light=false;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
         child: Scaffold(
           backgroundColor: Color(0xFFe7ddc9),
           appBar: buildAppBar(),
-          body: buildBody(light),
+          body: buildBody(),
           floatingActionButton: buildFloatingActionButton()
         ),
     );
@@ -35,8 +34,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
     );
   }
 
-  buildBody(bool light){
-
+  buildBody(){
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
@@ -49,7 +47,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
             Row(
               children: [
                 IconButton(onPressed: () {}, icon:  Icon(Icons.chevron_left), color: Color(0xFFc77b44), iconSize: 30, ),
-                Text("Medicamentos", style: TextStyle(color: Color(0xFFa5591f), fontSize: 18))
+                Text("Medicamentos", style: TextStyle(color: Color(0xFFa5591f), fontSize: 18)),
               ],
             ),
             Container(
