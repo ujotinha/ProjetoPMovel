@@ -38,12 +38,11 @@ buildbody(){
       padding: EdgeInsets.all(16.0),
       child: Container(
         padding: EdgeInsets.all(16.0),
-        alignment: Alignment.topCenter,
         decoration: const BoxDecoration(
               color: Color(0xFFf0e6d4),
             borderRadius: BorderRadius.all(Radius.circular(16))
           ),
-          height: 800,
+          height: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -68,6 +67,7 @@ buildbody(){
                         Icons.title,
                         color: Color(0xFF7e4f27),
                       ),
+
                       Icon(
                         Icons.image,
                         color: Color(0xFF7e4f27),
@@ -89,7 +89,7 @@ buildbody(){
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Título da nota", textAlign: TextAlign.justify, style: TextStyle(fontSize: 23, color: Color(0xFF834d30))),
-                    Text("Escreva seu registro aqui....", textAlign: TextAlign.justify, style: TextStyle(fontSize: 13, color: Color(0xFF834d30))),
+                    Text("Escreva seu registro aqui...", textAlign: TextAlign.justify, style: TextStyle(fontSize: 13, color: Color(0xFF834d30))),
 
 
                   ],
@@ -98,7 +98,6 @@ buildbody(){
 
               Container(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
                       width: 115,
