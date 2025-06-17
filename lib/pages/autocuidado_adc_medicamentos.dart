@@ -9,7 +9,6 @@ class AutocuidadoAdcMedicamentos extends StatefulWidget {
 }
 
 class _AutocuidadoAdcMedicamentosState extends State<AutocuidadoAdcMedicamentos> {
-  bool light=false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class _AutocuidadoAdcMedicamentosState extends State<AutocuidadoAdcMedicamentos>
       child: Scaffold(
           backgroundColor: Color(0xFFe7ddc9),
           appBar: buildAppBar(),
-          body: buildBody(light),
+          body: buildBody(),
       ),
     );
   }
@@ -35,7 +34,7 @@ class _AutocuidadoAdcMedicamentosState extends State<AutocuidadoAdcMedicamentos>
     );
   }
 
-  buildBody(bool light){
+  buildBody(){
 
     return Padding(
       padding: EdgeInsets.all(8.0),
