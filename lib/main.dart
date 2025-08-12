@@ -8,6 +8,6 @@ import 'package:projetointheirskin/pages/habitos.dart';
 
 void main() {
 
-  runApp(MaterialApp(home:Habitos()));
+  runApp(MaterialApp(home:Autocuidado()));
 
 }
