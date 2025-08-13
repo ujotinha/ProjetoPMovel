@@ -8,66 +8,356 @@ class Pesquisa extends StatefulWidget {
 }
 
 class _PesquisaState extends State<Pesquisa> {
-  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-          backgroundColor: Color(0xFFe7ddc9),
-          body: buildBody(),
-          appBar: buildAppBar(),
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            backgroundColor: Color(0xFFc77b44),
-            unselectedItemColor: Colors.white,
-            selectedItemColor: Colors.white,
-            selectedLabelStyle: TextStyle(fontSize: 10),
-            showUnselectedLabels: false,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Autocuidado"),
-              BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: 'Pesquisa'),
-              BottomNavigationBarItem(icon: Icon(Icons.groups), label: 'Pacientes'),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
-            ],
-          ),
-        )
-    );
-  }
-
-  buildAppBar() {
-    return AppBar(
-      backgroundColor: Color(0xFFe0d4bd),
-      shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(30.0),
-          bottomRight: Radius.circular(30.0),
-        ),
-      ),
-      centerTitle: false,
-      title: Image.asset("assets/logo.png", height: 40, width: 70),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.account_circle),
-          color: Color(0xFFc77b44),
-        )
-      ],
-    );
-  }
-
-  buildBody(){
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
+        padding: EdgeInsets.all(16.0),
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(
+            color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
+        child: ListView(
+          children: [
+            Column(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Sobre o Câncer: ",
+                      style: TextStyle(color: Color(0xFFa5591f)),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 30,
+                  width: 95,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFa5591f),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: Text(
+                      "Ver mais",
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Vídeos: ",
+                      style: TextStyle(color: Color(0xFFa5591f)),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 30,
+                  width: 95,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFa5591f),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: Text(
+                      "Ver mais",
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Dicas: ",
+                      style: TextStyle(color: Color(0xFFa5591f)),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 30,
+                  width: 95,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFa5591f),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: Text(
+                      "Ver mais",
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Artigos: ",
+                      style: TextStyle(color: Color(0xFFa5591f)),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 62,
+                          width: 100,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFc18e67),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16))),
+                            child: Text(
+                              "O que é o câncer?",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 30,
+                  width: 95,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFa5591f),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: Text(
+                      "Ver mais",
+                      style: TextStyle(color: Colors.white, fontSize: 11),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

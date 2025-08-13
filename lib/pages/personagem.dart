@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class bodyPersonagem extends StatefulWidget {
-  const bodyPersonagem({super.key});
+class Personagem extends StatefulWidget {
+  const Personagem({super.key});
 
   @override
-  State<bodyPersonagem> createState() => _bodyPersonagemState();
+  State<Personagem> createState() => _PersonagemState();
 }
 
-class _bodyPersonagemState extends State<bodyPersonagem> {
+class _PersonagemState extends State<Personagem> {
   @override
   Widget build(BuildContext context) {
     return Padding(

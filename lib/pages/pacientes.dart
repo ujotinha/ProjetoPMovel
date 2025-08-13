@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class bodyPacientes extends StatefulWidget {
-  const bodyPacientes({super.key});
+class Pacientes extends StatefulWidget {
+  const Pacientes({super.key});
 
   @override
-  State<bodyPacientes> createState() => _bodyPacientesState();
+  State<Pacientes> createState() => _PacientesState();
 }
 
-class _bodyPacientesState extends State<bodyPacientes> {
+class _PacientesState extends State<Pacientes> {
   @override
   Widget build(BuildContext context) {
     return Padding(
