@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/widgets/CardMedicamento.dart';
+import '../db/medicamentos_dao.dart';
 
 class AutocuidadoMedicamentos extends StatefulWidget {
   const AutocuidadoMedicamentos({super.key});
@@ -8,6 +10,19 @@ class AutocuidadoMedicamentos extends StatefulWidget {
 }
 
 class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
+
+  List listaMedicamentos = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    listaMedicamentos = await MedicamentosDao().listarMedicamentos();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,30 +65,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
                 Text("Medicamentos", style: TextStyle(color: Color(0xFFa5591f), fontSize: 18)),
               ],
             ),
-            Container(
-              padding: EdgeInsets.all(15.0),
-              decoration: BoxDecoration(color: Color(0xFFe0d4bd), borderRadius: BorderRadius.circular(18)),
-              height: 98,
-              width: 350,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Erlotinibe", style: TextStyle(color: Color(0xFF7b4a28))),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("08:00", style: TextStyle(fontSize: 20, color: Color(0xFF7b4a28)),),
-                      Row(
-                        children: [
-                          Text("Todos os dias", style: TextStyle(fontSize: 10, color: Color(0xFF7b4a28)),),
-                          IconButton(onPressed: () {}, icon:  Icon(Icons.toggle_on), color: Color(0xFFa5591f), iconSize: 32,),
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
+            CardMedicamento(medicamento: medicamento);
             SizedBox(height: 10),
             Container(
               padding: EdgeInsets.all(15.0),
