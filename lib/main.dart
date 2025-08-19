@@ -8,6 +8,6 @@ import 'package:projetointheirskin/pages/personagem.dart';
 
 void main() {
 
-  runApp(MaterialApp(home:AutocuidadoMedicamentos()));
+  runApp(MaterialApp(home:Homepage()));
 
 }

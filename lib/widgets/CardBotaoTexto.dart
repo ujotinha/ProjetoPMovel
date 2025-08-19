@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/domain/ConteudosBtnInfo.dart';
+import 'package:projetointheirskin/domain/BotaoTexto.dart';
 
-class Cardconteudosbtn extends StatefulWidget {
-  Conteudosbtninfo informacoes;
+class Cardbotaotexto extends StatefulWidget {
 
-  Cardconteudosbtn({
-    required this.informacoes,
+  BotaoTexto botaoTexto;
+
+  Cardbotaotexto({
+    required this.botaoTexto,
     super.key
   });
 
   @override
-  State<Cardconteudosbtn> createState() => _CardconteudosbtnState();
+  State<Cardbotaotexto> createState() => _CardbotaotextoState();
 }
 
-class _CardconteudosbtnState extends State<Cardconteudosbtn> {
-
-  Conteudosbtninfo get informacoes => widget.informacoes;
+class _CardbotaotextoState extends State<Cardbotaotexto> {
+  BotaoTexto get botaoTexto => widget.botaoTexto;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _CardconteudosbtnState extends State<Cardconteudosbtn> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16))),
         child: Text(
-          informacoes.titulo,
+          botaoTexto.titulo,
           style: TextStyle(color: Colors.white, fontSize: 12),
         ),
       ),

@@ -9,7 +9,6 @@ class MedicamentosDao {
     var result = await db.rawQuery(sql);
 
     List<Medicamento> listaMedicamentos = [];
-
     await Future.delayed(Duration(seconds: 3));
 
     // ForEach
