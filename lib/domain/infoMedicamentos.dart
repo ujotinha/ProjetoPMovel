@@ -8,6 +8,7 @@ class Medicamento{
     required this.horario_medicamento,
     required this.data_medicamento,
   });
+
   Medicamento.fromJson(Map<String, dynamic> json) {
     nome_medicamento = json['nome'];
     horario_medicamento = json['horario'];
