@@ -93,7 +93,7 @@ class _PacientesState extends State<Pacientes> {
                             ],
                           ),
                           Container(
-                              height: 20,
+                              height: 21,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
