@@ -33,11 +33,13 @@ class _InicioState extends State<Inicio> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Spacer(),
-                Container( // Logo-titulo
+                Container(
+                  // Logo-titulo
                   child: Image.asset("assets/logo.png"),
                 ),
-                Spacer(flex: 3,),
-
+                Spacer(
+                  flex: 3,
+                ),
                 Container(
                   height: 128,
                   width: 300,
@@ -81,7 +83,6 @@ class _InicioState extends State<Inicio> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
