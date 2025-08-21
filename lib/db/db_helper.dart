@@ -1,52 +1,69 @@
 import 'dart:async';
-
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBHelper {
   Future<Database> initDB() async {
     String path = await getDatabasesPath();
-    String dbName = 'airbnb.db';
-
-    // C:/aqrquivos/jkdahsdja/airbnb.db
+    String dbName = 'medicamentos.db';
     String dbPath = join(path, dbName);
+
+    await deleteDatabase(dbPath);
+
     Database database = await openDatabase(
       dbPath,
       version: 1,
       onCreate: onCreate,
     );
-
     print(dbPath);
     return database;
   }
 
   Future<void> onCreate(Database db, int version) async {
-    String sql = '''CREATE TABLE Propriedade (
+    print('onCreate foi chamado!');
+
+    String sql_medicamentos = '''CREATE TABLE MEDICAMENTOS (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    valor REAL NOT NULL,
-    avaliacao REAL,
-    datas TEXT,
-    local TEXT,
-    tipoDeHost TEXT,
-    urlImage TEXT
-    );''';
+    nome TEXT,
+    horario TEXT,
+    data TEXT
+  );''';
+    await db.execute(sql_medicamentos);
+    print('Tabela MEDICAMENTOS criada');
 
+    String sql = '''CREATE TABLE CONSULTAS (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT,
+    horario TEXT,
+    data TEXT
+  );''';
     await db.execute(sql);
+    print('Tabela CONSULTAS criada');
 
-    sql =
-    "INSERT INTO Propriedade (valor, avaliacao, datas, local, tipoDeHost, urlImage) VALUES (2225.000, 4.80, '10-31 Dec', 'Harlingen, Netherlands', 'Professional Host', 'https://news.airbnb.com/wp-content/uploads/sites/4/2019/06/PJM020719Q202_Luxe_WanakaNZ_LivingRoom_0264-LightOn_R1.jpg?fit=3200%2C2133');";
-    await db.execute(sql);
+    // Inserções
+    String sql_erlotinib =
+    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
+    await db.execute(sql_erlotinib);
+    print('Erlotinib inserido');
 
-    sql =
-    "INSERT INTO Propriedade (valor, avaliacao, datas, local, tipoDeHost, urlImage) VALUES (1850.000, 4.92, '20-28 Jul', 'Campos do Jordão, Brazil', 'Superhost', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/667104136.jpg?k=0232c39cb40c3b9c7c3b60b2c5c9fa1d0c7c25b4e20e3354ae71df528b0a13a9&o=&hp=1');";
-    await db.execute(sql);
+    String sql_dipirona =
+    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+    await db.execute(sql_dipirona);
+    print('Dipirona 1 inserido');
 
-    sql =
-    "INSERT INTO Propriedade (valor, avaliacao, datas, local, tipoDeHost, urlImage) VALUES (980.000, 4.75, '05-15 Sep', 'Lisbon, Portugal', 'Professional Host', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/82990832.jpg?k=83c1b95f88126bb3f1d822c19654c1ff5e1b037c4d25042dbd82112e25331afb&o=&hp=1');";
-    await db.execute(sql);
+    String sql_ibupronfeno =
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+    await db.execute(sql_ibupronfeno);
+    print('Dipirona 1 inserido');
 
-    sql =
-    "INSERT INTO Propriedade (valor, avaliacao, datas, local, tipoDeHost, urlImage) VALUES (3200.000, 4.98, '28 Dec - 05 Jan', 'Florianópolis, Brazil', 'Superhost', 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/173625874.jpg?k=5d9a7d0bcdb33c8c6959ac1d03cd869a7a34cbc1e16485486e518fb846fb664a&o=&hp=1');";
-    await db.execute(sql);
+
+    await db.execute(
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:00', 'Todos os dias');");
+    await db.execute(
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '09:00', '19 de maio');");
+    await db.execute(
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '12:30', '20 de maio');");
+    await db.execute(
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '18:00', '21 de maio');");
   }
 }
