@@ -29,7 +29,6 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: Color(0xFFe7ddc9),
-          appBar: buildAppBar(),
           body: buildBody(),
           floatingActionButton: buildFloatingActionButton()),
     );
@@ -72,19 +71,14 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
               ],
             ),
             SizedBox(height: 10),
-            Container(
-              decoration: BoxDecoration(
-                  color: Color(0xFFe0d4bd),
-                  borderRadius: BorderRadius.circular(18)),
-              height: 98,
-              width: 350,
+            Expanded(
               child: ListView.builder(
                   itemCount: listaMedicamentos.length,
                   itemBuilder: (context, i){
                     return CardMedicamento(medicamento: listaMedicamentos[i]);
                   },
-                )
-              ),
+                ),
+            ),
           ],
         ),
       ),

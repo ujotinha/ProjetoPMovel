@@ -8,32 +8,54 @@ class DBHelper {
     String dbName = 'medicamentos.db';
     String dbPath = join(path, dbName);
 
+    await deleteDatabase(dbPath);
+
     Database database = await openDatabase(
       dbPath,
       version: 1,
       onCreate: onCreate,
     );
-
+    print(dbPath);
     return database;
   }
 
   Future<void> onCreate(Database db, int version) async {
+    print('onCreate foi chamado!');
 
-    String sql = '''CREATE TABLE MEDICAMENTOS (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      nome TEXT,
-      horario TEXT,
-      data TEXT
-    );''';
-    await db.execute(sql);
+    String sql_medicamentos = '''CREATE TABLE MEDICAMENTOS (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT,
+    horario TEXT,
+    data TEXT
+  );''';
+    await db.execute(sql_medicamentos);
+    print('Tabela MEDICAMENTOS criada');
 
-    sql = '''CREATE TABLE CONSULTAS (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      nome TEXT,
-      horario TEXT,
-      data TEXT
-    );''';
+    String sql = '''CREATE TABLE CONSULTAS (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT,
+    horario TEXT,
+    data TEXT
+  );''';
     await db.execute(sql);
+    print('Tabela CONSULTAS criada');
+
+    // Inserções
+    String sql_erlotinib =
+    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
+    await db.execute(sql_erlotinib);
+    print('Erlotinib inserido');
+
+    String sql_dipirona =
+    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+    await db.execute(sql_dipirona);
+    print('Dipirona 1 inserido');
+
+    String sql_ibupronfeno =
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+    await db.execute(sql_ibupronfeno);
+    print('Dipirona 1 inserido');
+
 
     await db.execute(
         "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:00', 'Todos os dias');");
@@ -43,6 +65,5 @@ class DBHelper {
         "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '12:30', '20 de maio');");
     await db.execute(
         "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '18:00', '21 de maio');");
-
   }
 }
