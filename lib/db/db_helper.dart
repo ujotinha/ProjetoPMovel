@@ -43,5 +43,6 @@ class DBHelper {
         "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '12:30', '20 de maio');");
     await db.execute(
         "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '18:00', '21 de maio');");
+
   }
 }
