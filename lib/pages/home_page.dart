@@ -16,7 +16,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   int selectedIndex = 0;
   var pages = [
-    AutocuidadoMedicamentos(),
+    consultas(),
     Pesquisa(),
     Pacientes(),
     Personagem()

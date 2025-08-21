@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/db/consulta_dao.dart';
+import 'package:projetointheirskin/widgets/CardConsulta.dart';
 
 class consultas extends StatefulWidget {
   const consultas({super.key});
@@ -8,6 +10,20 @@ class consultas extends StatefulWidget {
 }
 
 class _consultasState extends State<consultas> {
+
+  List listaconsultas = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    listaconsultas = await ConsultaDao().listarconsulta();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -110,6 +126,14 @@ class _consultasState extends State<consultas> {
                             Icon(Icons.toggle_on, color: Color(0xFFa5591f),
                               size: 40,),
                           ],
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: listaconsultas.length,
+                            itemBuilder: (context, i){
+                              return CardConsulta(consulta: listaconsultas[i]);
+                            },
+                          ),
                         ),
 
                       ],
