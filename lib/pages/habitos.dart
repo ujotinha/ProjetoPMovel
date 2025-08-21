@@ -48,7 +48,7 @@ class _HabitosState extends State<Habitos> {
       child: Container(
         padding: EdgeInsets.all(30),
         width: double.infinity,
-        height: double.infinity,
+        height: 700,
         decoration: BoxDecoration(color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
 
         child: Column(
