@@ -1,15 +1,48 @@
 import 'package:flutter/material.dart';
 
-class bodyPersonagem extends StatefulWidget {
-  const bodyPersonagem({super.key});
+class Habitos extends StatefulWidget {
+  const Habitos({super.key});
 
   @override
-  State<bodyPersonagem> createState() => _bodyPersonagemState();
+  State<Habitos> createState() => _HabitosState();
 }
 
-class _bodyPersonagemState extends State<bodyPersonagem> {
+class _HabitosState extends State<Habitos> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+          backgroundColor: Color(0xFFe7ddc9),
+          appBar: buildAppBar(),
+          body: buildBody(),
+          bottomNavigationBar: buildBottomNavigationBar(),
+        ),
+    );
+  }
+  buildAppBar(){
+    return AppBar(
+      actions: [
+        IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.account_circle),
+            color: Color (0xFFc77b44),
+        ),
+      ],
+      backgroundColor: Color(0xFFe0d4bd),
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(90.0),
+          bottomRight: Radius.circular(90.0),
+        ),
+      ),
+      centerTitle: false,
+      title: Image.asset("assets/logo.png", height: 50, width: 110),
+    );
+  }
+
+  buildBody(){
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
@@ -21,17 +54,17 @@ class _bodyPersonagemState extends State<bodyPersonagem> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 150,
-              height: 20,
-              decoration: BoxDecoration(color: Color(0xFFca876d), borderRadius: BorderRadius.circular(20)),
-              child: Row(
-                children: [
-                  Icon(Icons.paid, color: Color (0xFFffe3d7), size: 15,),
-                  Text("0,00 | Nível 1", style: TextStyle( color: Color (0xFFffe3d7))),
-                ],
-              ),
+          Container(
+            width: 150,
+            height: 20,
+            decoration: BoxDecoration(color: Color(0xFFca876d), borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              children: [
+                Icon(Icons.paid, color: Color (0xFFffe3d7), size: 15,),
+                Text("0,00 | Nível 1", style: TextStyle( color: Color (0xFFffe3d7))),
+              ],
             ),
+          ),
             SizedBox(
               height: 30,
             ),
@@ -99,8 +132,8 @@ class _bodyPersonagemState extends State<bodyPersonagem> {
                       padding: EdgeInsets.only(left: 12, right: 12),
                       backgroundColor: Color(0xFFca876d),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13)
-                      )
+                        borderRadius: BorderRadius.circular(13)
+                    )
                   ),
                   child: Row(
                     children: [
@@ -162,4 +195,46 @@ class _bodyPersonagemState extends State<bodyPersonagem> {
 
     );
   }
+
+  buildBottomNavigationBar(){
+    return  BottomNavigationBar(
+      currentIndex: selectedIndex,
+      onTap: (index) {
+        setState(() {
+          selectedIndex = index;
+        }
+        );
+      },
+      backgroundColor: Color (0xFFc77b44),
+      unselectedItemColor: Color(0xFFffffff),
+      selectedItemColor: Color(0xFFffffff),
+      showUnselectedLabels: false,
+      type: BottomNavigationBarType.fixed,
+      items: [
+        BottomNavigationBarItem(
+          icon:Icon(Icons.favorite),
+          label: 'Autocuidado',
+        ),
+        BottomNavigationBarItem(
+            icon:Icon(Icons.menu_book),
+           label: 'Pesquisa'
+        ),
+        BottomNavigationBarItem(
+          icon:Icon(Icons.groups),
+          label: 'Pacientes'
+        ),
+        BottomNavigationBarItem(
+          icon:Icon(Icons.person),
+          label: 'Personagem'
+        ),
+      ],
+    );
+  }
 }
+
+
+
+
+
+
+
