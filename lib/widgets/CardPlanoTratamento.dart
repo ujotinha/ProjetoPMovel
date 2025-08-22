@@ -1,26 +1,30 @@
+import 'package:projetointheirskin/domain/PlanoTratamento.dart';
 import 'package:projetointheirskin/pages/pacientes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CardPlanoTratamento extends StatefulWidget {
-  //Propriedade propriedade;
+  PlanoTratamento planoTratamento;
 
   CardPlanoTratamento({
-    //required this.propriedade,
+    required this.planoTratamento,
     super.key,
   });
 
   @override
-  State<CardPlanoTratamento> createState() => _CardPlanoTratamentoState();
+  State<CardPlanoTratamento> createState() =>
+      _CardPlanoTratamentoState();
 }
 
 class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
-  // String get urlImage => widget.urlImage;
-  //Propriedade get propriedade => widget.propriedade;
+  PlanoTratamento get planoTratamento => widget.planoTratamento;
+  late String diagnostico;
 
-  // String getUrlImage {
-  //   return widget.urlImage;
-  // }
+  @override
+  void initState() {
+    super.initState();
+    diagnostico = widget.planoTratamento.Diagnostico;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,7 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                   ),
                   Container(
                       padding: EdgeInsets.all(7),
-                      height: 70,
+                      height: 100,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
@@ -57,65 +61,68 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Diagnóstico detalhado:",
+                          Text("Diagnóstico detalhado: \n$diagnostico",
                               style: TextStyle(
-                                  color: Color(0xFF7b4a28), fontSize: 10)),
+                                  color: Color(0xFF7b4a28), fontSize: 10, ), textAlign: TextAlign.justify,),
                         ],
                       )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                          padding: EdgeInsets.all(7),
-                          height: 28,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text("Medicamentos",
-                                  style: TextStyle(
-                                      color: Color(0xFF7b4a28), fontSize: 10)),
-                            ],
-                          )),
-                      Container(
-                          padding: EdgeInsets.all(7),
-                          height: 28,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text("Terapia",
-                                  style: TextStyle(
-                                      color: Color(0xFF7b4a28), fontSize: 10)),
-                            ],
-                          )),
-                      Container(
-                          padding: EdgeInsets.all(7),
-                          height: 28,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text("Quimioterapia",
-                                  style: TextStyle(
-                                      color: Color(0xFF7b4a28), fontSize: 10)),
-                            ],
-                          )),
+                      SizedBox(
+                        width: 100,
+                        height: 28,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.all(2),
+                              backgroundColor: Colors.white,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Medicamentos",
+                                    style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10)),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 28,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.all(2),
+                              backgroundColor: Colors.white,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Terapia",
+                                    style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10)),
+                              ],
+                            )),
+                      ),
+                      SizedBox(
+                        width: 100,
+                        height: 28,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.all(2),
+                              backgroundColor: Colors.white,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Quimioterapia",
+                                    style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10)),
+                              ],
+                            )),
+                      ),
                     ],
                   )
                 ],

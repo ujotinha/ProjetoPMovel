@@ -28,8 +28,20 @@ class DBHelper {
     horario TEXT,
     data TEXT
   );''';
+
+    String sql_pacientes = '''CREATE TABLE INFORMACOES_PACIENTE (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nomePaciente TEXT,
+        dt_nasc TEXT,
+        cpf TEXT,
+        diagnostico TEXT
+    );''';
+
     await db.execute(sql_medicamentos);
     print('Tabela MEDICAMENTOS criada');
+
+    await db.execute(sql_pacientes);
+    print('Tabela PACIENTES criada');
 
     String sql = '''CREATE TABLE CONSULTAS (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,12 +54,12 @@ class DBHelper {
 
     // Inserções
     String sql_erlotinib =
-    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
     await db.execute(sql_erlotinib);
     print('Erlotinib inserido');
 
     String sql_dipirona =
-    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
     await db.execute(sql_dipirona);
     print('Dipirona 1 inserido');
 
@@ -56,6 +68,10 @@ class DBHelper {
     await db.execute(sql_ibupronfeno);
     print('Dipirona 1 inserido');
 
+    String sql_joserodrigues =
+        "INSERT INTO INFORMACOES_PACIENTE (nomePaciente, dt_nasc, cpf, diagnostico) VALUES ('José Rodrigues Silva', '17/02/1983', '123.456.147-01', 'Paciente apresenta tosse persistente há mais de 3 meses, hemoptise, perda de peso significativa e dor torácica. Exame de imagem (tomografia) evidenciou massa pulmonar no lobo superior direito, confirmada por biópsia como carcinoma de células não pequenas.');";
+    await db.execute(sql_joserodrigues);
+    print('NOME inserido');
 
     await db.execute(
         "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:00', 'Todos os dias');");
