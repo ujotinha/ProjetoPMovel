@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/db/pacientes_dao.dart';
+import 'package:projetointheirskin/db/planotratamento_dao.dart';
 import 'package:projetointheirskin/widgets/CardBotaoCuidarPaciente.dart';
 import 'package:projetointheirskin/widgets/CardInformacoesPaciente.dart';
 import 'package:projetointheirskin/widgets/CardPlanoTratamento.dart';
@@ -11,6 +13,21 @@ class Pacientes extends StatefulWidget {
 }
 
 class _PacientesState extends State<Pacientes> {
+  List listaInformacoes = [];
+  List listaPlanoTratamento = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    listaInformacoes = await PacientesDao().listarPacientes();
+    listaPlanoTratamento = await PlanoTratamentoDao().listarDiagnostico();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,18 +38,33 @@ class _PacientesState extends State<Pacientes> {
         height: double.infinity,
         decoration: BoxDecoration(
             color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
-        child: ListView(
+        child: Column(
           children: [
-            CardInformacoesPaciente(),
-            SizedBox(
-              height: 25,
-            ),
-            CardPlanoTratamento(),
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: CardBotaoCuidarPaciente(),
+            Expanded(
+              child: ListView.builder(
+                itemCount: listaInformacoes.length,
+                itemBuilder: (context, i) {
+                  return Column(
+                    children: [
+                      CardInformacoesPaciente(
+                        infoPaciente: listaInformacoes[i],
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      CardPlanoTratamento(
+                        planoTratamento: listaPlanoTratamento[i],
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Center(
+                        child: CardBotaoCuidarPaciente(),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ],
         ),

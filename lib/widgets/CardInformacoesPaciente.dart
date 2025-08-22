@@ -1,12 +1,11 @@
-import 'package:projetointheirskin/pages/pacientes.dart';
+import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CardInformacoesPaciente extends StatefulWidget {
-  //Propriedade propriedade;
+  InfoPaciente infoPaciente;
 
   CardInformacoesPaciente({
-    //required this.propriedade,
+    required this.infoPaciente,
     super.key,
   });
 
@@ -16,12 +15,7 @@ class CardInformacoesPaciente extends StatefulWidget {
 }
 
 class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
-  // String get urlImage => widget.urlImage;
-  //Propriedade get propriedade => widget.propriedade;
-
-  // String getUrlImage {
-  //   return widget.urlImage;
-  // }
+  InfoPaciente get infoPaciente => widget.infoPaciente;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +44,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                   ),
                   Column(
                     children: [
-                      Text("José Rodrigues Silva",
+                      Text(infoPaciente.nome_Paciente,
                           style: TextStyle(color: Color(0xFF846446))),
                       Container(
                         height: 20,
