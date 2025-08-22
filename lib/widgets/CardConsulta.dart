@@ -26,7 +26,7 @@ class _CardConsultaState extends State<CardConsulta> {
       decoration: BoxDecoration(
           color: Color(0xFFE0D4BD),
           borderRadius: BorderRadius.circular(12)),
-      height: 100,
+      height: 120,
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,35 +35,35 @@ class _CardConsultaState extends State<CardConsulta> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Pneumologista - ", style: TextStyle(color: Color(
+                  consulta.especialidade, style: TextStyle(color: Color(
                     0XFF7b4a28), fontSize: 17),),
-                Text("Doutor Aragão", style: TextStyle(color: Color(
+                Text("  - "),
+                SizedBox(width: 5),
+                Text(consulta.nomemedico, style: TextStyle(color: Color(
                     0XFF7b4a28), fontSize: 12),),
               ]
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("10:30", style: TextStyle(color: Color(0XFF7b4a28),
+              Text(consulta.horario, style: TextStyle(color: Color(0XFF7b4a28),
                 fontSize: 18,)),
 
               Row(
                 children: [
-                  Text("qua,16 de abr.",
+                  Text(consulta.data,
                       style: TextStyle(color: Color(0XFF7b4a28))),
                   Icon(Icons.toggle_on, color: Color(0xFFa5591f),
                     size: 40,),
                 ],
               ),
-
             ],
-          )
+          ),
+          SizedBox(
+            height: 20,
+          ),
         ],
       ),
-
     );
-
   }
-
-
 }

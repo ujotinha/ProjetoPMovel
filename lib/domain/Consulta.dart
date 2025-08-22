@@ -1,33 +1,29 @@
 class Consulta {
-  late String urlImage;
-  late String local;
-  late double avaliacao;
-  late String datas;
-  late double valor;
+  late String especialidade;
+  late String nomemedico;
+  late String horario;
+  late String data;
 
   Consulta({
-    required this.urlImage,
-    required this.local,
-    required this.avaliacao,
-    required this.datas,
-    required this.valor,
+    required this.especialidade,
+    required this.nomemedico,
+    required this.horario,
+    required this.data,
   });
 
   Consulta.fromJson(Map<String, dynamic> json) {
-    valor = json['valor'];
-    avaliacao = json['avaliacao'];
-    datas = json['datas'];
-    local = json['local'];
-    urlImage = json['urlImage'];
+    especialidade = json['especialidade'];
+    nomemedico = json['nomemedico'];
+    horario = json['horario'];
+    data = json['data'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['valor'] = this.valor;
-    data['avaliacao'] = this.avaliacao;
-    data['datas'] = this.datas;
-    data['local'] = this.local;
-    data['urlImage'] = this.urlImage;
+    data['especialidade'] = this.especialidade;
+    data['nomemedico'] = this.nomemedico;
+    data['horario'] = this.horario;
+    data['data'] = this.data;
     return data;
   }
 }

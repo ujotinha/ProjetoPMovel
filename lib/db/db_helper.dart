@@ -31,14 +31,14 @@ class DBHelper {
     await db.execute(sql_medicamentos);
     print('Tabela MEDICAMENTOS criada');
 
-    String sql = '''CREATE TABLE CONSULTAS (
+    String sql = '''CREATE TABLE MEDICAMENTOS (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT,
     horario TEXT,
     data TEXT
   );''';
     await db.execute(sql);
-    print('Tabela CONSULTAS criada');
+    print('Tabela MEDICAMENTOS criada');
 
     // Inserções
     String sql_erlotinib =

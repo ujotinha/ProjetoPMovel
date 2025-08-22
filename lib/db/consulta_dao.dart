@@ -1,10 +1,11 @@
+import 'package:projetointheirskin/db/db_helperconsulta.dart';
 import 'package:projetointheirskin/domain/Consulta.dart';
 import 'package:projetointheirskin/db/db_helper.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ConsultaDao {
   Future<List<Consulta>> listarconsulta() async {
-    Database db = await DBHelper().initDB();
+    Database db = await DbHelperconsulta().initDB();
     String sql = 'SELECT * FROM CONSULTA;';
     var result = await db.rawQuery(sql);
 

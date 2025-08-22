@@ -49,113 +49,25 @@ class _consultasState extends State<consultas> {
                       style: TextStyle(fontSize: 20, color: Color(0xFFc77b44))),
                 ],
               ),
-              Container(
-                padding: EdgeInsets.all(18.0),
-                decoration: BoxDecoration(
-                    color: Color(0xFFE0D4BD),
-                    borderRadius: BorderRadius.circular(12)),
-                height: 100,
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Pneumologista - ", style: TextStyle(color: Color(
-                              0XFF7b4a28), fontSize: 17),),
-                          Text("Doutor Aragão", style: TextStyle(color: Color(
-                              0XFF7b4a28), fontSize: 12),),
-                        ]
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Expanded(
+                child: ListView.builder(
+                  itemCount: listaconsultas.length,
+                  itemBuilder: (context, i) {
+                    return Column(
                       children: [
-                        Text("10:30", style: TextStyle(color: Color(0XFF7b4a28),
-                          fontSize: 18,)),
-
-                        Row(
-                          children: [
-                            Text("qua,16 de abr.",
-                                style: TextStyle(color: Color(0XFF7b4a28))),
-                            Icon(Icons.toggle_on, color: Color(0xFFa5591f),
-                              size: 40,),
-                          ],
+                        CardConsulta(consulta: listaconsultas[i]),
+                        SizedBox(
+                          height: 20,
                         ),
-
                       ],
-                    )
-                  ],
-                ),
+                    );
 
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                padding: EdgeInsets.all(18.0),
-                decoration: BoxDecoration(
-                    color: Color(0xFFE0D4BD),
-                    borderRadius: BorderRadius.circular(12)),
-                height: 100,
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text("Oncologista - ", style: TextStyle(color: Color(
-                              0XFF7b4a28), fontSize: 17),),
-                          Text("Doutor Alencar", style: TextStyle(color: Color(
-                              0XFF7b4a28), fontSize: 12),),
-                        ]
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("14:00", style: TextStyle(color: Color(0XFF7b4a28),
-                          fontSize: 18,)),
-
-                        Row(
-                          children: [
-                            Text("sex,30 de set.",
-                                style: TextStyle(color: Color(0XFF7b4a28))),
-                            Icon(Icons.toggle_on, color: Color(0xFFa5591f),
-                              size: 40,),
-                          ],
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: listaconsultas.length,
-                            itemBuilder: (context, i){
-                              return CardConsulta(consulta: listaconsultas[i]);
-                            },
-                          ),
-                        ),
-
-                      ],
-                    ),
-                  ],
+                  },
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  buildFloatingActionButton() {
-    return FloatingActionButton(
-      backgroundColor: Color(0xFFa5591f),
-      onPressed: () {},
-      shape: CircleBorder(),
-      child: Icon(
-        Icons.add,
-        color: Colors.white,
       ),
     );
   }
