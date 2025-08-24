@@ -8,7 +8,7 @@ class PesquisaHelper{
     String dbName = 'pesquisa.db';
     String dbPath = join(path, dbName);
 
-    //await deleteDatabase(dbPath);
+    await deleteDatabase(dbPath);
 
     Database database = await openDatabase(
       dbPath,
@@ -31,9 +31,18 @@ class PesquisaHelper{
     sql = '''CREATE TABLE BOTAOIMAGEM (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     urlImage TEXT,
-    titulo  TEXT,
+    tituloVideo  TEXT,
     autor TEXT
     );''';
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
     await db.execute(sql);
 
     sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
@@ -45,7 +54,7 @@ class PesquisaHelper{
     sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Radiologia do câncer de pulmão', 1, 0, 0);";
     await db.execute(sql);
 
-    sql = "INSERT INTO BOTAOIMAGEM (urlImage, titulo, autor) VALUES ('https://i.ytimg.com/vi/z1KKxTO0ITw/maxresdefault.jpg', 'Câncer de Pulmão', 'Hospital Alemão Oswaldo');";
+    sql = "INSERT INTO BOTAOIMAGEM (urlImage, tituloVideo, autor) VALUES ('https://i.ytimg.com/vi/z1KKxTO0ITw/maxresdefault.jpg', 'Câncer de Pulmão', 'Hospital Alemão Oswaldo');";
     await db.execute(sql);
   }
 }

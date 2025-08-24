@@ -5,5 +5,5 @@ import 'package:projetointheirskin/pages/inicio.dart';
 import 'package:projetointheirskin/pages/teste.dart';
 
 void main() {
-  runApp(MaterialApp(home:Teste()));
+  runApp(MaterialApp(home:Homepage()));
 }

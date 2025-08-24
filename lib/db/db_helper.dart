@@ -31,23 +31,15 @@ class DBHelper {
     await db.execute(sql_medicamentos);
     print('Tabela MEDICAMENTOS criada');
 
-    String sql = '''CREATE TABLE CONSULTAS (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT,
-    horario TEXT,
-    data TEXT
-  );''';
-    await db.execute(sql);
-    print('Tabela CONSULTAS criada');
 
     // Inserções
     String sql_erlotinib =
-    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
     await db.execute(sql_erlotinib);
     print('Erlotinib inserido');
 
     String sql_dipirona =
-    "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
     await db.execute(sql_dipirona);
     print('Dipirona 1 inserido');
 
@@ -55,15 +47,5 @@ class DBHelper {
         "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
     await db.execute(sql_ibupronfeno);
     print('Dipirona 1 inserido');
-
-
-    await db.execute(
-        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:00', 'Todos os dias');");
-    await db.execute(
-        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '09:00', '19 de maio');");
-    await db.execute(
-        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '12:30', '20 de maio');");
-    await db.execute(
-        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Machumba', '18:00', '21 de maio');");
   }
 }

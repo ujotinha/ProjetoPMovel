@@ -21,8 +21,8 @@ class _CardbotaotextoState extends State<Cardbotaotexto> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 62,
-      width: 100,
+      height: 55,
+      width: 110,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(

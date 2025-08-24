@@ -31,11 +31,15 @@ class _CardbotaoimagemState extends State<Cardbotaoimagem> {
                 backgroundColor: Color(0xFFc18e67),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16))),
-            child: Image.network(botaoimagem.urlImage)
+            child: Image.network(botaoimagem.urlImage,
+              fit: BoxFit.contain,
+              height: double.infinity,
+              width: double.infinity,
+            ),
           ),
         ),
-        Text(botaoimagem.tituloVideo, style: TextStyle(fontSize: 12, color: Color(0xFFa5591f))),
-        Text(botaoimagem.autor, style: TextStyle(fontSize: 11, color: Color(0xFFd1a688)))
+        Text(botaoimagem.tituloVideo, style: TextStyle(fontSize: 10, color: Color(0xFFa5591f))),
+        Text(botaoimagem.autor, style: TextStyle(fontSize: 9, color: Color(0xFFd1a688)))
       ],
     );
   }

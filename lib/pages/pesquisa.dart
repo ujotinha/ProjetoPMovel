@@ -55,17 +55,17 @@ class _PesquisaState extends State<Pesquisa> {
                     SizedBox(
                       height: 5,
                     ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ListView.builder(
-                            itemCount: listaBotaoSobreCancer.length,
-                            itemBuilder: (context, i){
-                              return Cardbotaotexto(botaotexto: listaBotaoSobreCancer[i]);
-                            },
-                          )
-                        ],
+                    SizedBox(
+                      height: 80,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listaBotaoSobreCancer.length,
+                        itemBuilder: (context, i) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 4.0),
+                            child: Cardbotaotexto(botaotexto: listaBotaoSobreCancer[i]),
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -102,17 +102,17 @@ class _PesquisaState extends State<Pesquisa> {
                     SizedBox(
                       height: 5,
                     ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ListView.builder(
-                            itemCount: listaBotaoVideo.length,
-                            itemBuilder: (context, i){
-                              return Cardbotaoimagem(botaoimagem: listaBotaoVideo[i]);
-                            },
-                          )
-                        ],
+                    SizedBox(
+                      height: 100,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listaBotaoVideo.length,
+                        itemBuilder: (context, i) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                            child: Cardbotaoimagem(botaoimagem: listaBotaoVideo[i]),
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -149,19 +149,20 @@ class _PesquisaState extends State<Pesquisa> {
                     SizedBox(
                       height: 5,
                     ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ListView.builder(
-                            itemCount: listaBotaoDicas.length,
-                            itemBuilder: (context, i){
-                              return Cardbotaotexto(botaotexto: listaBotaoDicas[i]);
-                            },
-                          )
-                        ],
+                    SizedBox(
+                      height: 80,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listaBotaoDicas.length,
+                        itemBuilder: (context, i) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                            child: Cardbotaotexto(botaotexto: listaBotaoDicas[i]),
+                          );
+                        },
                       ),
                     ),
+
                   ],
                 ),
                 SizedBox(
@@ -196,17 +197,17 @@ class _PesquisaState extends State<Pesquisa> {
                     SizedBox(
                       height: 5,
                     ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ListView.builder(
-                            itemCount: listaBotaoArtigo.length,
-                            itemBuilder: (context, i){
-                              return Cardbotaotexto(botaotexto: listaBotaoArtigo[i]);
-                            },
-                          )
-                        ],
+                    SizedBox(
+                      height: 80,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: listaBotaoArtigo.length,
+                        itemBuilder: (context, i) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                            child: Cardbotaotexto(botaotexto: listaBotaoArtigo[i]),
+                          );
+                        },
                       ),
                     ),
                   ],
