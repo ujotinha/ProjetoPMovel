@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:projetointheirskin/widgets/CardMedicamento.dart';
 import '../db/medicamentos_dao.dart';
 
@@ -61,7 +62,12 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Homepage()),
+                    );
+                  },
                   icon: Icon(Icons.chevron_left),
                   color: Color(0xFFc77b44),
                   iconSize: 30,
@@ -73,11 +79,11 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
             SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
-                  itemCount: listaMedicamentos.length,
-                  itemBuilder: (context, i){
-                    return CardMedicamento(medicamento: listaMedicamentos[i]);
-                  },
-                ),
+                itemCount: listaMedicamentos.length,
+                itemBuilder: (context, i){
+                  return CardMedicamento(medicamento: listaMedicamentos[i]);
+                },
+              ),
             ),
           ],
         ),
@@ -88,7 +94,8 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
   buildFloatingActionButton() {
     return FloatingActionButton(
       backgroundColor: Color(0xFFa5591f),
-      onPressed: () {},
+      onPressed: () {
+      },
       shape: CircleBorder(),
       child: Icon(
         Icons.add,
