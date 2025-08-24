@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/domain/BotaoTexto.dart';
 
+class Cardbotaotexto extends StatefulWidget {
 
-class CardBotaoDicas extends StatefulWidget {
+  Botaotexto botaotexto;
+
+  Cardbotaotexto({
+    required this.botaotexto,
+    super.key
+  });
 
   @override
-  State<CardBotaoDicas> createState() => _CardBotaoDicasState();
+  State<Cardbotaotexto> createState() => _CardbotaotextoState();
 }
 
-class _CardBotaoDicasState extends State<CardBotaoDicas> {
+class _CardbotaotextoState extends State<Cardbotaotexto> {
+
+  Botaotexto get botaotexto => widget.botaotexto;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +30,10 @@ class _CardBotaoDicasState extends State<CardBotaoDicas> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16))),
         child: Text(
-          '',
+          botaotexto.titulo,
           style: TextStyle(color: Colors.white, fontSize: 12),
         ),
       ),
-    );
+    );;
   }
 }

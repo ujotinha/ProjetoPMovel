@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/db/botaoimagem_dao.dart';
+import 'package:projetointheirskin/db/botaotexto_dao.dart';
+import 'package:projetointheirskin/domain/BotaoImagem.dart';
+import 'package:projetointheirskin/widgets/CardBotaoImagem.dart';
+import 'package:projetointheirskin/widgets/CardBotaoTexto.dart';
 
 class Pesquisa extends StatefulWidget {
   const Pesquisa({super.key});
@@ -12,6 +17,19 @@ class _PesquisaState extends State<Pesquisa> {
   List listaBotaoDicas = [];
   List listaBotaoSobreCancer = [];
   List listaBotaoVideo = [];
+
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    listaBotaoArtigo = await BotaotextoDao().listarBotaoArtigo();
+    listaBotaoDicas = await BotaotextoDao().listarBotaoDicas();
+    listaBotaoSobreCancer = await BotaotextoDao().listarBotaoSobreCancer();
+    listaBotaoVideo = await BotaoimagemDao().listarBotaoImagem();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +59,12 @@ class _PesquisaState extends State<Pesquisa> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          /*ListView.builder(
-                            itemCount: ,
-                            itemBuilder: ,
+                          ListView.builder(
+                            itemCount: listaBotaoSobreCancer.length,
+                            itemBuilder: (context, i){
+                              return Cardbotaotexto(botaotexto: listaBotaoSobreCancer[i]);
+                            },
                           )
-                           */
                         ],
                       ),
                     ),
@@ -87,7 +106,12 @@ class _PesquisaState extends State<Pesquisa> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
+                          ListView.builder(
+                            itemCount: listaBotaoVideo.length,
+                            itemBuilder: (context, i){
+                              return Cardbotaoimagem(botaoimagem: listaBotaoVideo[i]);
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -129,7 +153,12 @@ class _PesquisaState extends State<Pesquisa> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          
+                          ListView.builder(
+                            itemCount: listaBotaoDicas.length,
+                            itemBuilder: (context, i){
+                              return Cardbotaotexto(botaotexto: listaBotaoDicas[i]);
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -171,7 +200,12 @@ class _PesquisaState extends State<Pesquisa> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
+                          ListView.builder(
+                            itemCount: listaBotaoArtigo.length,
+                            itemBuilder: (context, i){
+                              return Cardbotaotexto(botaotexto: listaBotaoArtigo[i]);
+                            },
+                          )
                         ],
                       ),
                     ),

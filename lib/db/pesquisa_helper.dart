@@ -8,7 +8,7 @@ class PesquisaHelper{
     String dbName = 'pesquisa.db';
     String dbPath = join(path, dbName);
 
-    await deleteDatabase(dbPath);
+    //await deleteDatabase(dbPath);
 
     Database database = await openDatabase(
       dbPath,
@@ -19,31 +19,33 @@ class PesquisaHelper{
   }
 
   Future<void> onCreate(Database db, int version) async {
-    String sql_botaoartigo = '''CREATE TABLE BOTAOARTIGO (
+    String sql = '''CREATE TABLE BOTAOTEXTO (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     titulo TEXT,
-    
+    isArtigo INTEGER,
+    isDicas INTEGER,
+    isSobreCancer INTEGER
     );''';
-    await db.execute(sql_botaoartigo);
+    await db.execute(sql);
 
-    String sql_botaodicas = '''CREATE TABLE BOTAODICAS (
+    sql = '''CREATE TABLE BOTAOIMAGEM (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    titulo TEXT,
-    
+    urlImage TEXT,
+    titulo  TEXT,
+    autor TEXT
     );''';
-    await db.execute(sql_botaodicas);
+    await db.execute(sql);
 
-    String sql_botaosobrecancer = '''CREATE TABLE BOTAOSOBRECANCER (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    titulo TEXT,
-    
-    );''';
-    await db.execute(sql_botaosobrecancer);
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
+    await db.execute(sql);
 
-    String sql_botaovideo = '''CREATE TABLE BOTAOVIDEO (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    urlImage TEXT
-    );''';
-    await db.execute(sql_botaovideo);
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Evitar o tabagismo', 0, 1, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Radiologia do câncer de pulmão', 1, 0, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOIMAGEM (urlImage, titulo, autor) VALUES ('https://i.ytimg.com/vi/z1KKxTO0ITw/maxresdefault.jpg', 'Câncer de Pulmão', 'Hospital Alemão Oswaldo');";
+    await db.execute(sql);
   }
 }
