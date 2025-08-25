@@ -109,7 +109,7 @@ class _PesquisaState extends State<Pesquisa> {
                         itemCount: listaBotaoVideo.length,
                         itemBuilder: (context, i) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                            padding: EdgeInsets.symmetric(horizontal: 4.0),
                             child: Cardbotaoimagem(botaoimagem: listaBotaoVideo[i]),
                           );
                         },

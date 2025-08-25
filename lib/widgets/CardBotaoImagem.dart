@@ -29,12 +29,14 @@ class _CardbotaoimagemState extends State<Cardbotaoimagem> {
             onPressed: () {},
             style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFc18e67),
+                padding: EdgeInsets.zero,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16))),
-            child: Image.network(botaoimagem.urlImage,
-              fit: BoxFit.contain,
+            child: Image.network(
+              botaoimagem.urlImage,
               height: double.infinity,
               width: double.infinity,
+              fit: BoxFit.cover,
             ),
           ),
         ),

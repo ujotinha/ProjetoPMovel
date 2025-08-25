@@ -36,22 +36,49 @@ class PesquisaHelper{
     );''';
     await db.execute(sql);
 
-    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão?', 0, 0, 1);";
     await db.execute(sql);
 
-    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão?', 0, 0, 1);";
     await db.execute(sql);
 
-    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão?', 0, 0, 1);";
     await db.execute(sql);
 
-    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão', 0, 0, 1);";
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('O que é o câncer de pulmão?', 0, 0, 1);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Evitar o tabagismo', 0, 1, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Evitar o tabagismo', 0, 1, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Evitar o tabagismo', 0, 1, 0);";
     await db.execute(sql);
 
     sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Evitar o tabagismo', 0, 1, 0);";
     await db.execute(sql);
 
     sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Radiologia do câncer de pulmão', 1, 0, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Radiologia do câncer de pulmão', 1, 0, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Radiologia do câncer de pulmão', 1, 0, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOTEXTO (titulo, isArtigo, isDicas, isSobreCancer) VALUES ('Radiologia do câncer de pulmão', 1, 0, 0);";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOIMAGEM (urlImage, tituloVideo, autor) VALUES ('https://i.ytimg.com/vi/z1KKxTO0ITw/maxresdefault.jpg', 'Câncer de Pulmão', 'Hospital Alemão Oswaldo');";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOIMAGEM (urlImage, tituloVideo, autor) VALUES ('https://i.ytimg.com/vi/z1KKxTO0ITw/maxresdefault.jpg', 'Câncer de Pulmão', 'Hospital Alemão Oswaldo');";
+    await db.execute(sql);
+
+    sql = "INSERT INTO BOTAOIMAGEM (urlImage, tituloVideo, autor) VALUES ('https://i.ytimg.com/vi/z1KKxTO0ITw/maxresdefault.jpg', 'Câncer de Pulmão', 'Hospital Alemão Oswaldo');";
     await db.execute(sql);
 
     sql = "INSERT INTO BOTAOIMAGEM (urlImage, tituloVideo, autor) VALUES ('https://i.ytimg.com/vi/z1KKxTO0ITw/maxresdefault.jpg', 'Câncer de Pulmão', 'Hospital Alemão Oswaldo');";
