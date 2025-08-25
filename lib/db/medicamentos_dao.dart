@@ -7,9 +7,9 @@ class MedicamentosDao {
     Database db = await DBHelper().initDB();
     String sql = 'SELECT * FROM MEDICAMENTOS;';
     var result = await db.rawQuery(sql);
+    print(result);
 
     List<Medicamento> listaMedicamentos = [];
-    await Future.delayed(Duration(seconds: 3));
 
     // ForEach
     for (var json in result) {

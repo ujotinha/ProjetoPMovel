@@ -14,12 +14,4 @@ class Medicamento{
     horario_medicamento = json['horario'];
     data_medicamento = json['data'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nome'] = this.nome_medicamento;
-    data['horario'] = this.horario_medicamento;
-    data['data'] = this.data_medicamento;
-    return data;
-  }
 }
