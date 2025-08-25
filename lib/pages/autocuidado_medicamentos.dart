@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:projetointheirskin/widgets/CardMedicamento.dart';
 import '../db/medicamento_dao.dart';
 
@@ -63,12 +62,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Homepage()),
-                    );
-                  },
+                  onPressed: () {},
                   icon: Icon(Icons.chevron_left),
                   color: Color(0xFFc77b44),
                   iconSize: 30,
