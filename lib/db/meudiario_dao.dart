@@ -1,4 +1,3 @@
-import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
 import 'package:projetointheirskin/db/db_helper.dart';
 import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
 import 'package:sqflite/sqflite.dart';

@@ -1,6 +1,5 @@
 import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
 import 'package:projetointheirskin/pages/anotacao.dart';
-import 'package:projetointheirskin/pages/pacientes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
