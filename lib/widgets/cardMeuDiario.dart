@@ -1,4 +1,5 @@
 import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:projetointheirskin/pages/pacientes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -71,7 +72,13 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
       children: [
         SizedBox(height: 20),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Anotacao(notaDiario: this.notaDiario,)),
+            );
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFFdfceb5),
             padding: const EdgeInsets.only(
@@ -140,7 +147,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                         height: 1,
                       ),
                     ),
-                    const Divider(color: Color(0xFFa5591f)),
+                    Divider(color: Color(0xFFa5591f)),
                     Text(
                       notaDiario.Conteudo,
                       textAlign: TextAlign.start,

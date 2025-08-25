@@ -85,8 +85,12 @@ class DBHelper {
     print('NOME inserido');
 
     String sql_nota1 =
-        "INSERT INTO MEU_DIARIO (nomeNota, dt_escrita, dia, conteudo) VALUES ('José Rodrigues Silva', '17/02/1983', 'Seg.', 'Paciente apresenta tosse persistente há mais de 3 meses, hemoptise, perda de peso significativa e dor torácica. Exame de imagem (tomografia) evidenciou massa pulmonar no lobo superior direito, confirmada por biópsia como carcinoma de células não pequenas.');";
+        "INSERT INTO MEU_DIARIO (nomeNota, dt_escrita, dia, conteudo) VALUES ('Minha consulta', '18/08/2025', 'Seg.', 'A minha consulta foi ótima, o Dr. Tiago é um amor de pessoa e me deixou confortável o tempo inteiro. Com certeza eu irei voltar para realizar outra consulta.');";
     await db.execute(sql_nota1);
+    print('NOTA inserido');
+    String sql_nota2 =
+        "INSERT INTO MEU_DIARIO (nomeNota, dt_escrita, dia, conteudo) VALUES ('Minha segunda consulta', '20/08/2025', 'Qua.', 'A minha segunda consulta foi ótima, o Dr. Tiago é um amor de pessoa e me deixou confortável o tempo inteiro. Com certeza eu irei voltar para realizar outra consulta.');";
+    await db.execute(sql_nota2);
     print('NOTA inserido');
 
   }
