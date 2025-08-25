@@ -36,7 +36,7 @@ class _CardMedicamentoState extends State<CardMedicamento> {
                   Row(
                     children: [
                       Text(medicamento.data_medicamento, style: TextStyle(fontSize: 10, color: Color(0xFF7b4a28)),),
-                      IconButton(onPressed: () {}, icon:  Icon(Icons.toggle_on), color: Color(0xFFa5591f), iconSize: 32,),
+                      IconButton( icon:  Icon(Icons.toggle_on), color: Color(0xFFa5591f), iconSize: 32, onPressed: () { },),
                     ],
                   )
                 ],

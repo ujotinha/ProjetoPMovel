@@ -12,6 +12,7 @@ class AutocuidadoMedicamentos extends StatefulWidget {
 }
 
 class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
+
   List listaMedicamentos = [];
 
   @override
