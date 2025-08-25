@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/db/meudiario_dao.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/widgets/cardMeuDiario.dart';
@@ -11,20 +12,18 @@ class MeuDiario extends StatefulWidget {
 }
 
 class _MeuDiarioState extends State<MeuDiario> {
-  //List listaInformacoes = [];
-  //List listaPlanoTratamento = [];
+  List listaNotas = [];
 
   @override
   void initState() {
     super.initState();
-    //loadData();
+    loadData();
   }
 
-  /*loadData() async {
-    listaInformacoes = await PacientesDao().listarPacientes();
-    listaPlanoTratamento = await PlanoTratamentoDao().listarDiagnostico();
+  loadData() async {
+    listaNotas = await MeuDiarioDao().listarNotas();
     setState(() {});
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,9 +91,9 @@ class _MeuDiarioState extends State<MeuDiario> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: 1,
+                    itemCount: listaNotas.length,
                     itemBuilder: (context, i) {
-                      return CardMeuDiario();
+                      return CardMeuDiario(notaDiario: listaNotas[i],);
                     },
                   ),
                 )

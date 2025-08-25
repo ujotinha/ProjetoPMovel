@@ -1,12 +1,13 @@
+import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
 import 'package:projetointheirskin/pages/pacientes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CardMeuDiario extends StatefulWidget {
-  //PlanoTratamento planoTratamento;
+  NotaDiario notaDiario;
 
   CardMeuDiario({
-    //required this.planoTratamento,
+    required this.notaDiario,
     super.key,
   });
 
@@ -15,16 +16,57 @@ class CardMeuDiario extends StatefulWidget {
 }
 
 class _CardMeuDiarioState extends State<CardMeuDiario> {
-  //PlanoTratamento get planoTratamento => widget.planoTratamento;
+  NotaDiario get notaDiario => widget.notaDiario;
 
   @override
   void initState() {
     super.initState();
-    //diagnostico = widget.planoTratamento.Diagnostico;
   }
 
   @override
   Widget build(BuildContext context) {
+    String dataCompleta = notaDiario.Data_Escrita;
+    List<String> partesData = dataCompleta.split('/');
+
+    String dia = '';
+    String mesNumero = '';
+    String ano = '';
+    String mesAbreviado = '';
+
+    if (partesData.length == 3) {
+      dia = partesData[0];
+      mesNumero = partesData[1];
+      ano = partesData[2];
+    }
+
+    if (mesNumero == '01') {
+      mesAbreviado = 'Jan.';
+    } else if (mesNumero == '02') {
+      mesAbreviado = 'Fev.';
+    } else if (mesNumero == '03') {
+      mesAbreviado = 'Mar.';
+    } else if (mesNumero == '04') {
+      mesAbreviado = 'Abr.';
+    } else if (mesNumero == '05') {
+      mesAbreviado = 'Mai.';
+    } else if (mesNumero == '06') {
+      mesAbreviado = 'Jun.';
+    } else if (mesNumero == '07') {
+      mesAbreviado = 'Jul.';
+    } else if (mesNumero == '08') {
+      mesAbreviado = 'Ago.';
+    } else if (mesNumero == '09') {
+      mesAbreviado = 'Set.';
+    } else if (mesNumero == '10') {
+      mesAbreviado = 'Out.';
+    } else if (mesNumero == '11') {
+      mesAbreviado = 'Nov.';
+    } else if (mesNumero == '12') {
+      mesAbreviado = 'Dez.';
+    } else {
+      mesAbreviado = 'Inv.';
+    }
+
     return Column(
       children: [
         SizedBox(height: 20),
@@ -49,21 +91,21 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "13",
+                      dia,
                       style: GoogleFonts.libreCaslonDisplay(
                         color: const Color(0xFFa5591f),
                         fontSize: 15,
                       ),
                     ),
                     Text(
-                      "Abr.",
+                      mesAbreviado,
                       style: GoogleFonts.libreCaslonDisplay(
                         color: const Color(0xFFa5591f),
                         fontSize: 15,
                       ),
                     ),
                     Text(
-                      "2025",
+                      ano,
                       style: GoogleFonts.libreCaslonDisplay(
                         color: const Color(0xFFa5591f),
                         fontSize: 15,
@@ -79,7 +121,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Minha consulta",
+                      notaDiario.nome_Nota,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.libreCaslonDisplay(
@@ -89,7 +131,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                       ),
                     ),
                     Text(
-                      "Dom.",
+                      notaDiario.Dia,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.libreCaslonDisplay(
@@ -100,7 +142,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                     ),
                     const Divider(color: Color(0xFFa5591f)),
                     Text(
-                      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                      notaDiario.Conteudo,
                       textAlign: TextAlign.start,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
