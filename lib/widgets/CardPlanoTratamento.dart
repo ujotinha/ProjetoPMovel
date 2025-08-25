@@ -1,7 +1,5 @@
 import 'package:projetointheirskin/domain/PlanoTratamento.dart';
-import 'package:projetointheirskin/pages/pacientes.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CardPlanoTratamento extends StatefulWidget {
   PlanoTratamento planoTratamento;
@@ -12,8 +10,7 @@ class CardPlanoTratamento extends StatefulWidget {
   });
 
   @override
-  State<CardPlanoTratamento> createState() =>
-      _CardPlanoTratamentoState();
+  State<CardPlanoTratamento> createState() => _CardPlanoTratamentoState();
 }
 
 class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
@@ -61,9 +58,14 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Diagnóstico detalhado: \n$diagnostico",
-                              style: TextStyle(
-                                  color: Color(0xFF7b4a28), fontSize: 10, ), textAlign: TextAlign.justify,),
+                          Text(
+                            "Diagnóstico detalhado: \n$diagnostico",
+                            style: TextStyle(
+                              color: Color(0xFF7b4a28),
+                              fontSize: 10,
+                            ),
+                            textAlign: TextAlign.justify,
+                          ),
                         ],
                       )),
                   Row(
@@ -83,7 +85,9 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text("Medicamentos",
-                                    style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10)),
+                                    style: TextStyle(
+                                        color: Color(0xFF7b4a28),
+                                        fontSize: 10)),
                               ],
                             )),
                       ),
@@ -101,7 +105,9 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text("Terapia",
-                                    style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10)),
+                                    style: TextStyle(
+                                        color: Color(0xFF7b4a28),
+                                        fontSize: 10)),
                               ],
                             )),
                       ),
@@ -119,7 +125,9 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text("Quimioterapia",
-                                    style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10)),
+                                    style: TextStyle(
+                                        color: Color(0xFF7b4a28),
+                                        fontSize: 10)),
                               ],
                             )),
                       ),

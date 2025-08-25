@@ -1,5 +1,5 @@
-import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
 
 class CardInformacoesPaciente extends StatefulWidget {
   InfoPaciente infoPaciente;
@@ -16,6 +16,17 @@ class CardInformacoesPaciente extends StatefulWidget {
 
 class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
   InfoPaciente get infoPaciente => widget.infoPaciente;
+  late String nomePaciente;
+  late String dtNasc;
+  late String CPF;
+
+  @override
+  void initState() {
+    super.initState();
+    nomePaciente = widget.infoPaciente.nome_Paciente;
+    dtNasc = widget.infoPaciente.Data_Nascimento;
+    CPF = widget.infoPaciente.Cpf;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +112,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Nome completo:",
+                          Text("Nome completo: $nomePaciente",
                               style: TextStyle(
                                   color: Color(0xFF7b4a28), fontSize: 10)),
                         ],
@@ -121,7 +132,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Data de Nascimento:",
+                              Text("Data de Nascimento: $dtNasc",
                                   style: TextStyle(
                                       color: Color(0xFF7b4a28), fontSize: 10)),
                             ],
@@ -138,7 +149,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("CPF:",
+                              Text("CPF: $CPF",
                                   style: TextStyle(
                                       color: Color(0xFF7b4a28), fontSize: 10)),
                             ],
