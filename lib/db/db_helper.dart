@@ -3,10 +3,10 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBHelper {
-
   Future<Database> initDB() async {
     String path = await getDatabasesPath();
-    String dbPath = join(path, 'medicamentos.db');
+    String dbName = 'medicamentos.db';
+    String dbPath = join(path, dbName);
 
     await deleteDatabase(dbPath);
 
@@ -15,13 +15,14 @@ class DBHelper {
       version: 1,
       onCreate: onCreate,
     );
-
+    print(dbPath);
     return database;
   }
 
   Future<void> onCreate(Database db, int version) async {
+    print('onCreate foi chamado!');
 
-    String sql = '''CREATE TABLE MEDICAMENTOS (
+    String sql_medicamentos = '''CREATE TABLE MEDICAMENTOS (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT,
     horario TEXT,
@@ -59,10 +60,34 @@ class DBHelper {
     horario TEXT,
     data TEXT
   );''';
+    await db.execute(sql);
+    print('Tabela CONSULTAS criada');
+
+    // Inserções
+    String sql_erlotinib =
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
+    await db.execute(sql_erlotinib);
+    print('Erlotinib inserido');
+
+    String sql_dipirona =
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+    await db.execute(sql_dipirona);
+    print('Dipirona 1 inserido');
+
+    String sql_ibupronfeno =
+        "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
+    await db.execute(sql_ibupronfeno);
+    print('Dipirona 1 inserido');
+
+    String sql_joserodrigues =
+        "INSERT INTO INFORMACOES_PACIENTE (nomePaciente, dt_nasc, cpf, diagnostico) VALUES ('José Rodrigues Silva', '17/02/1983', '123.456.147-01', 'Paciente apresenta tosse persistente há mais de 3 meses, hemoptise, perda de peso significativa e dor torácica. Exame de imagem (tomografia) evidenciou massa pulmonar no lobo superior direito, confirmada por biópsia como carcinoma de células não pequenas.');";
+    await db.execute(sql_joserodrigues);
+    print('NOME inserido');
 
     String sql_nota1 =
         "INSERT INTO MEU_DIARIO (nomeNota, dt_escrita, dia, conteudo) VALUES ('José Rodrigues Silva', '17/02/1983', 'Seg.', 'Paciente apresenta tosse persistente há mais de 3 meses, hemoptise, perda de peso significativa e dor torácica. Exame de imagem (tomografia) evidenciou massa pulmonar no lobo superior direito, confirmada por biópsia como carcinoma de células não pequenas.');";
     await db.execute(sql_nota1);
     print('NOTA inserido');
+
   }
 }
