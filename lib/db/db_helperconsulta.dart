@@ -45,5 +45,15 @@ class DbHelperconsulta {
     await db.execute(sql_radiooncologista);
     print('Consulta radio-oncologista inserida');
 
+    String sql_oncohematologia =
+        "INSERT INTO CONSULTA (especialidade, nomemedico, horario, data) VALUES ('Onco-hematologia', 'Doutor Nogueira', '13:00', 'ter., 28 de nov.');";
+    await db.execute(sql_oncohematologia);
+    print('Consulta onco-hematologia inserida');
+
+    String sql_cirurgiaooncologista =
+        "INSERT INTO CONSULTA (especialidade, nomemedico, horario, data) VALUES ('Cirurgiao-oncologista', 'Doutor Bastos', '17:00', 'seg, 09 de dez.');";
+    await db.execute(sql_cirurgiaooncologista);
+    print('Consulta cirurgiao-oncologista inserida');
+
   }
 }

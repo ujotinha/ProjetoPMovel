@@ -26,51 +26,76 @@ class _consultasState extends State<consultas> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10.0),
-      child: Container(
-        padding: EdgeInsets.all(8.0),
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-            color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  IconButton(onPressed: () {},
-                    icon: Icon(Icons.arrow_back_ios),
-                    color: Color(0xFFc77b44),
-                    iconSize: 20,),
-                  Text("Consultas",
-                      style: TextStyle(fontSize: 20, color: Color(0xFFc77b44))),
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: listaconsultas.length,
-                  itemBuilder: (context, i) {
-                    return Column(
-                      children: [
-                        CardConsulta(consulta: listaconsultas[i]),
-                        SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    );
-
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
+    return SafeArea(
+      child: Scaffold(
+        body: buildBody(),
+        floatingActionButton: buildFloatingActionButton(),
+        backgroundColor: Color(0xFFe7ddc9),
       ),
     );
   }
-}
+
+    buildBody() {
+      return Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Container(
+          padding: EdgeInsets.all(8.0),
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+              color: Color(0xFFf0e6d4),
+              borderRadius: BorderRadius.circular(20)),
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    IconButton(onPressed: () {},
+                      icon: Icon(Icons.arrow_back_ios),
+                      color: Color(0xFFc77b44),
+                      iconSize: 20,),
+                    Text("Consultas",
+                        style: TextStyle(
+                            fontSize: 20, color: Color(0xFFc77b44))),
+                  ],
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: listaconsultas.length,
+                    itemBuilder: (context, i) {
+                      return Column(
+                        children: [
+                          CardConsulta(consulta: listaconsultas[i]),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+  }
+  buildFloatingActionButton() {
+    return FloatingActionButton(
+      backgroundColor: Color(0xFFa5591f),
+      onPressed: () {},
+      shape: CircleBorder(),
+      child: Icon(
+        Icons.add,
+        color: Colors.white,
+      ),
+    );
+  }
+
+
+
 
 

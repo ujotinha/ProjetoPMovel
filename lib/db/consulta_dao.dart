@@ -13,7 +13,6 @@ class ConsultaDao {
 
     await Future.delayed(Duration(seconds: 3));
 
-    // ForEach
     for (var json in result) {
       Consulta consultas = Consulta.fromJson(json);
       listaConsulta.add(consultas);
