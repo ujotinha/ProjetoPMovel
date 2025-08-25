@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 class DBHelper {
   Future<Database> initDB() async {
     String path = await getDatabasesPath();
-    String dbName = 'medicamentos.db';
+    String dbName = 'pacientes.db';
     String dbPath = join(path, dbName);
 
     await deleteDatabase(dbPath);
