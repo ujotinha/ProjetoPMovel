@@ -28,16 +28,41 @@ class DBHelper {
     data TEXT
   );''';
 
-    await db.execute(sql);
+    String sql_pacientes = '''CREATE TABLE INFORMACOES_PACIENTE (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nomePaciente TEXT,
+        dt_nasc TEXT,
+        cpf TEXT,
+        diagnostico TEXT
+    );''';
 
-    sql = "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Erlotinib', '08:30', 'Todos os dias');";
-    await db.execute(sql);
+    await db.execute(sql_medicamentos);
+    print('Tabela MEDICAMENTOS criada');
 
-    sql = "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Dipirona', '09:00', '19 de maio');";
-    await db.execute(sql);
+    await db.execute(sql_pacientes);
+    print('Tabela PACIENTES criada');
 
-    sql = "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Ibuprofeno', '10:00', 'Amanhã');";
-    await db.execute(sql);
+    String sql_diario = '''CREATE TABLE MEU_DIARIO (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nomeNota TEXT,
+        dt_escrita TEXT,
+        dia TEXT,
+        conteudo TEXT
+    );''';
 
+    await db.execute(sql_diario);
+    print('Tabela DIARIO criada');
+
+    String sql = '''CREATE TABLE CONSULTAS (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT,
+    horario TEXT,
+    data TEXT
+  );''';
+
+    String sql_nota1 =
+        "INSERT INTO MEU_DIARIO (nomeNota, dt_escrita, dia, conteudo) VALUES ('José Rodrigues Silva', '17/02/1983', 'Seg.', 'Paciente apresenta tosse persistente há mais de 3 meses, hemoptise, perda de peso significativa e dor torácica. Exame de imagem (tomografia) evidenciou massa pulmonar no lobo superior direito, confirmada por biópsia como carcinoma de células não pequenas.');";
+    await db.execute(sql_nota1);
+    print('NOTA inserido');
   }
 }
