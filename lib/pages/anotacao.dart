@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/widgets/CardAnotacao.dart';
 
 class Anotacao extends StatefulWidget {
-  NotaDiario notaDiario;
+  NotaDiario ?notaDiario;
 
   Anotacao({
-    required this.notaDiario,
-    super.key
+    this.notaDiario,
+    super.key,
   });
 
   @override
@@ -16,7 +16,8 @@ class Anotacao extends StatefulWidget {
 }
 
 class _AnotacaoState extends State<Anotacao> {
-  NotaDiario get notaDiario => widget.notaDiario;
+  NotaDiario? get notaDiario => widget.notaDiario;
+
   @override
   Widget build(BuildContext context) {
 

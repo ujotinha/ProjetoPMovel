@@ -4,10 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/pages/meu_diario.dart';
 
 class CardAnotacao extends StatefulWidget {
-  NotaDiario notaDiario;
+  NotaDiario ?notaDiario;
 
   CardAnotacao({
-    required this.notaDiario,
+    this.notaDiario,
     super.key,
   });
 
@@ -16,14 +16,19 @@ class CardAnotacao extends StatefulWidget {
 }
 
 class _CardAnotacaoState extends State<CardAnotacao> {
-  NotaDiario get notaDiario => widget.notaDiario;
+  NotaDiario? get notaDiario => widget.notaDiario;
   late String nomeNota;
   late String conteudo;
 
   @override
   void initState() {
-    nomeNota = widget.notaDiario.nome_Nota;
-    conteudo = widget.notaDiario.Conteudo;
+    if (widget.notaDiario != null) {
+      nomeNota = widget.notaDiario!.nome_Nota;
+      conteudo = widget.notaDiario!.Conteudo;
+    } else {
+      nomeNota = "";
+      conteudo = "";
+    }
     super.initState();
   }
 
@@ -44,7 +49,7 @@ class _CardAnotacaoState extends State<CardAnotacao> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const MeuDiario()),
+                            builder: (context) => MeuDiario()),
                       );
                     },
                     icon: Icon(Icons.chevron_left),
@@ -65,7 +70,7 @@ class _CardAnotacaoState extends State<CardAnotacao> {
                         decoration: InputDecoration(
                           hintText: 'Título da nota',
                           hintStyle: TextStyle(
-                              color: Color(0xFFa5591f).withOpacity(0.8)),
+                              color: Color(0xFFa5591f).withValues(alpha: 0.8)),
                           border: InputBorder.none,
                         ),
                         style: GoogleFonts.libreCaslonDisplay(
@@ -82,7 +87,7 @@ class _CardAnotacaoState extends State<CardAnotacao> {
                         decoration: InputDecoration(
                           hintText: 'Escreva seu registro aqui...',
                           hintStyle: TextStyle(
-                              color: Color(0xFFa5591f).withOpacity(0.8)),
+                              color: Color(0xFFa5591f).withValues(alpha: 0.8)),
                           border: InputBorder.none,
                         ),
                         style: GoogleFonts.libreCaslonDisplay(

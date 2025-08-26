@@ -148,7 +148,7 @@ class PaginaInicial extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const MeuDiario()),
+                                    builder: (context) => MeuDiario()),
                               );
                             },
                             style: ElevatedButton.styleFrom(

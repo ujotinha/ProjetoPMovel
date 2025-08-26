@@ -75,14 +75,14 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => Anotacao(notaDiario: this.notaDiario,)),
+                  builder: (context) => Anotacao(notaDiario: notaDiario,)),
             );
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFdfceb5),
-            padding: const EdgeInsets.only(
+            backgroundColor: Color(0xFFdfceb5),
+            padding: EdgeInsets.only(
                 left: 5, top: 5, right: 25, bottom: 5),
-            fixedSize: const Size(double.infinity, 90),
+            fixedSize: Size(double.infinity, 90),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -99,21 +99,21 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                     Text(
                       dia,
                       style: GoogleFonts.libreCaslonDisplay(
-                        color: const Color(0xFFa5591f),
+                        color: Color(0xFFa5591f),
                         fontSize: 15,
                       ),
                     ),
                     Text(
                       mesAbreviado,
                       style: GoogleFonts.libreCaslonDisplay(
-                        color: const Color(0xFFa5591f),
+                        color: Color(0xFFa5591f),
                         fontSize: 15,
                       ),
                     ),
                     Text(
                       ano,
                       style: GoogleFonts.libreCaslonDisplay(
-                        color: const Color(0xFFa5591f),
+                        color: Color(0xFFa5591f),
                         fontSize: 15,
                       ),
                     ),
@@ -131,7 +131,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.libreCaslonDisplay(
-                        color: const Color(0xFFa5591f),
+                        color: Color(0xFFa5591f),
                         fontSize: 18,
                         height: 1,
                       ),
@@ -141,7 +141,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.libreCaslonDisplay(
-                        color: const Color(0xFFa5591f),
+                        color: Color(0xFFa5591f),
                         fontSize: 13,
                         height: 1,
                       ),
@@ -153,7 +153,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.libreCaslonDisplay(
-                        color: const Color(0xFFa5591f),
+                        color: Color(0xFFa5591f),
                         fontSize: 13,
                         height: 0.8,
                       ),

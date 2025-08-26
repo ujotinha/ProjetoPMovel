@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/db/meudiario_dao.dart';
+import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/widgets/cardMeuDiario.dart';
 
+
 class MeuDiario extends StatefulWidget {
-  const MeuDiario({super.key});
+
+  MeuDiario({
+    super.key
+  });
 
   @override
   State<MeuDiario> createState() => _MeuDiarioState();
@@ -104,7 +109,13 @@ class _MeuDiarioState extends State<MeuDiario> {
   buildFloatingActionButton() {
     return FloatingActionButton(
       backgroundColor: Color(0xFFa5591f),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Anotacao(),
+        ));
+      },
       shape: CircleBorder(),
       child: Icon(
         Icons.add,
