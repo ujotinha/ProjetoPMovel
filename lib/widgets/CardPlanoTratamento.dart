@@ -1,11 +1,11 @@
-import 'package:projetointheirskin/domain/PlanoTratamento.dart';
+import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
 import 'package:flutter/material.dart';
 
 class CardPlanoTratamento extends StatefulWidget {
-  PlanoTratamento planoTratamento;
+  InfoPaciente infoPaciente;
 
   CardPlanoTratamento({
-    required this.planoTratamento,
+    required this.infoPaciente,
     super.key,
   });
 
@@ -14,14 +14,7 @@ class CardPlanoTratamento extends StatefulWidget {
 }
 
 class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
-  PlanoTratamento get planoTratamento => widget.planoTratamento;
-  late String diagnostico;
-
-  @override
-  void initState() {
-    super.initState();
-    diagnostico = widget.planoTratamento.Diagnostico;
-  }
+  InfoPaciente get infoPaciente => widget.infoPaciente;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +52,7 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Diagnóstico detalhado: \n$diagnostico",
+                            "Diagnóstico detalhado: \n${infoPaciente.Diagnostico}",
                             style: TextStyle(
                               color: Color(0xFF7b4a28),
                               fontSize: 10,
@@ -72,14 +65,14 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 100,
+                        width: 94,
                         height: 28,
                         child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.all(2),
-                              backgroundColor: Colors.white,
-                            ),
+                                padding: EdgeInsets.all(2),
+                                backgroundColor: Colors.white,
+                                elevation: 0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -92,14 +85,14 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                             )),
                       ),
                       SizedBox(
-                        width: 100,
+                        width: 94,
                         height: 28,
                         child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.all(2),
-                              backgroundColor: Colors.white,
-                            ),
+                                padding: EdgeInsets.all(2),
+                                backgroundColor: Colors.white,
+                                elevation: 0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -112,14 +105,14 @@ class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
                             )),
                       ),
                       SizedBox(
-                        width: 100,
+                        width: 94,
                         height: 28,
                         child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.all(2),
-                              backgroundColor: Colors.white,
-                            ),
+                                padding: EdgeInsets.all(2),
+                                backgroundColor: Colors.white,
+                                elevation: 0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,

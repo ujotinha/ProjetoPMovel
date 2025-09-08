@@ -16,17 +16,6 @@ class CardInformacoesPaciente extends StatefulWidget {
 
 class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
   InfoPaciente get infoPaciente => widget.infoPaciente;
-  late String nomePaciente;
-  late String dtNasc;
-  late String CPF;
-
-  @override
-  void initState() {
-    super.initState();
-    nomePaciente = widget.infoPaciente.nome_Paciente;
-    dtNasc = widget.infoPaciente.Data_Nascimento;
-    CPF = widget.infoPaciente.Cpf;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +101,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Nome completo: $nomePaciente",
+                          Text("Nome completo: ${infoPaciente.nome_Paciente}",
                               style: TextStyle(
                                   color: Color(0xFF7b4a28), fontSize: 10)),
                         ],
@@ -123,7 +112,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                       Container(
                           padding: EdgeInsets.all(7),
                           height: 28,
-                          width: 180,
+                          width: 176,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.white,
@@ -132,7 +121,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Data de Nascimento: $dtNasc",
+                              Text("Data de Nascimento: ${infoPaciente.Data_Nascimento}",
                                   style: TextStyle(
                                       color: Color(0xFF7b4a28), fontSize: 10)),
                             ],
@@ -140,7 +129,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                       Container(
                           padding: EdgeInsets.all(7),
                           height: 28,
-                          width: 120,
+                          width: 116,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.white,
@@ -149,7 +138,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("CPF: $CPF",
+                              Text("CPF: ${infoPaciente.Cpf}",
                                   style: TextStyle(
                                       color: Color(0xFF7b4a28), fontSize: 10)),
                             ],

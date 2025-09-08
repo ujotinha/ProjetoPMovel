@@ -1,14 +1,6 @@
-import 'package:projetointheirskin/pages/pacientes.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CardBotaoCuidarPaciente extends StatefulWidget {
-  //Propriedade propriedade;
-
-  CardBotaoCuidarPaciente({
-    //required this.propriedade,
-    super.key,
-  });
 
   @override
   State<CardBotaoCuidarPaciente> createState() =>
@@ -16,12 +8,6 @@ class CardBotaoCuidarPaciente extends StatefulWidget {
 }
 
 class _CardBotaoCuidarPacienteState extends State<CardBotaoCuidarPaciente> {
-  // String get urlImage => widget.urlImage;
-  //Propriedade get propriedade => widget.propriedade;
-
-  // String getUrlImage {
-  //   return widget.urlImage;
-  // }
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/db/pacientes_dao.dart';
-import 'package:projetointheirskin/db/planotratamento_dao.dart';
 import 'package:projetointheirskin/widgets/CardBotaoCuidarPaciente.dart';
 import 'package:projetointheirskin/widgets/CardInformacoesPaciente.dart';
 import 'package:projetointheirskin/widgets/CardPlanoTratamento.dart';
@@ -14,7 +13,6 @@ class Pacientes extends StatefulWidget {
 
 class _PacientesState extends State<Pacientes> {
   List listaInformacoes = [];
-  List listaPlanoTratamento = [];
 
   @override
   void initState() {
@@ -24,7 +22,6 @@ class _PacientesState extends State<Pacientes> {
 
   loadData() async {
     listaInformacoes = await PacientesDao().listarPacientes();
-    listaPlanoTratamento = await PlanoTratamentoDao().listarDiagnostico();
     setState(() {});
   }
 
@@ -53,7 +50,7 @@ class _PacientesState extends State<Pacientes> {
                         height: 25,
                       ),
                       CardPlanoTratamento(
-                        planoTratamento: listaPlanoTratamento[i],
+                        infoPaciente: listaInformacoes[i],
                       ),
                       SizedBox(
                         height: 50,
