@@ -18,12 +18,4 @@ class InfoPaciente{
     Diagnostico = json['diagnostico'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nomePaciente'] = this.nome_Paciente;
-    data['dt_nasc'] = this.Data_Nascimento;
-    data['cpf'] = this.Cpf;
-    data['diagnostico'] = this.Diagnostico;
-    return data;
-  }
 }
