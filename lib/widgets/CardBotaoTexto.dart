@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/domain/BotaoTexto.dart';
+import 'package:projetointheirskin/pages/conteudo_pesquisa.dart';
 
 class Cardbotaotexto extends StatefulWidget {
 
@@ -24,7 +25,9 @@ class _CardbotaotextoState extends State<Cardbotaotexto> {
       height: 55,
       width: 110,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>ConteudoPesquisa()));
+        },
         style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xFFc18e67),
             shape: RoundedRectangleBorder(
@@ -34,6 +37,6 @@ class _CardbotaotextoState extends State<Cardbotaotexto> {
           style: TextStyle(color: Colors.white, fontSize: 12),
         ),
       ),
-    );;
+    );
   }
 }

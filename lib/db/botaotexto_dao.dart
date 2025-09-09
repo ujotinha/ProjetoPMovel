@@ -10,7 +10,7 @@ class BotaotextoDao{
 
     List<Botaotexto> listaBotaoArtigo = [];
 
-    await Future.delayed(Duration(seconds: 3));
+    print(result);
     for(var json in result){
       Botaotexto botaotexto = Botaotexto.fromJson(json);
       listaBotaoArtigo.add(botaotexto);
@@ -25,7 +25,7 @@ class BotaotextoDao{
 
     List<Botaotexto> listaBotaoDicas = [];
 
-    await Future.delayed(Duration(seconds: 3));
+
     for(var json in result){
       Botaotexto botaotexto = Botaotexto.fromJson(json);
       listaBotaoDicas.add(botaotexto);
@@ -39,7 +39,7 @@ class BotaotextoDao{
 
     List<Botaotexto> listaBotaoSobreCancer = [];
 
-    await Future.delayed(Duration(seconds: 3));
+
     for(var json in result){
       Botaotexto botaotexto = Botaotexto.fromJson(json);
       listaBotaoSobreCancer.add(botaotexto);

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/pages/autocuidado_medicamento.dart';
-import 'package:projetointheirskin/pages/consultas.dart';
 import 'package:projetointheirskin/pages/autocuidado.dart';
-import 'package:projetointheirskin/pages/personagem.dart';
 import 'package:projetointheirskin/pages/pesquisa.dart';
-import 'package:projetointheirskin/pages/pacientes.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -16,10 +12,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   int selectedIndex = 0;
   var pages = [
-    AutocuidadoMedicamentos(),
+    Autocuidado(),
     Pesquisa(),
-    Pacientes(),
-    Personagem()
+    Pesquisa(),
+    Pesquisa()
   ];
   @override
   Widget build(BuildContext context) {
