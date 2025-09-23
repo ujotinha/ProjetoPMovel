@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projetointheirskin/db/botaoimagem_dao.dart';
 import 'package:projetointheirskin/db/botaotexto_dao.dart';
 import 'package:projetointheirskin/domain/BotaoImagem.dart';
+import 'package:projetointheirskin/domain/BotaoTexto.dart';
 import 'package:projetointheirskin/widgets/CardBotaoImagem.dart';
 import 'package:projetointheirskin/widgets/CardBotaoTexto.dart';
 
@@ -13,10 +14,10 @@ class Pesquisa extends StatefulWidget {
 }
 
 class _PesquisaState extends State<Pesquisa> {
-  List listaBotaoArtigo = [];
-  List listaBotaoDicas = [];
-  List listaBotaoSobreCancer = [];
-  List listaBotaoVideo = [];
+  late Future<List<Botaotexto>> listaBotaoArtigo;
+  late Future<List<Botaotexto>> listaBotaoDicas;
+  late Future<List<Botaotexto>> listaBotaoSobreCancer;
+  late Future<List<Botaoimagem>> listaBotaoVideo;
 
   void initState() {
     super.initState();
@@ -24,10 +25,10 @@ class _PesquisaState extends State<Pesquisa> {
   }
 
   loadData() async {
-    listaBotaoArtigo = await BotaotextoDao().listarBotaoArtigo();
-    listaBotaoDicas = await BotaotextoDao().listarBotaoDicas();
-    listaBotaoSobreCancer = await BotaotextoDao().listarBotaoSobreCancer();
-    listaBotaoVideo = await BotaoimagemDao().listarBotaoImagem();
+    listaBotaoArtigo = BotaotextoDao().listarBotaoArtigo();
+    listaBotaoDicas = BotaotextoDao().listarBotaoDicas();
+    listaBotaoSobreCancer = BotaotextoDao().listarBotaoSobreCancer();
+    listaBotaoVideo = BotaoimagemDao().listarBotaoImagem();
     setState(() {});
   }
 
@@ -57,16 +58,16 @@ class _PesquisaState extends State<Pesquisa> {
                     ),
                     SizedBox(
                       height: 80,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listaBotaoSobreCancer.length,
-                        itemBuilder: (context, i) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 4.0),
-                            child: Cardbotaotexto(botaotexto: listaBotaoSobreCancer[i]),
-                          );
-                        },
-                      ),
+                      child: FutureBuilder(
+                          future: listaBotaoSobreCancer,
+                          builder: (context, snapshot){
+                            if(snapshot.hasData){
+                              List<Botaotexto> lista = snapshot.requireData;
+                              return buildListViewTexto(lista);
+                            }
+                            return Center(child: CircularProgressIndicator(),);
+                          }
+                      )
                     ),
                   ],
                 ),
@@ -104,16 +105,16 @@ class _PesquisaState extends State<Pesquisa> {
                     ),
                     SizedBox(
                       height: 100,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listaBotaoVideo.length,
-                        itemBuilder: (context, i) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 4.0),
-                            child: Cardbotaoimagem(botaoimagem: listaBotaoVideo[i]),
-                          );
-                        },
-                      ),
+                      child: FutureBuilder(
+                        future: listaBotaoVideo,
+                        builder: (context, snapshot){
+                          if(snapshot.hasData){
+                            List<Botaoimagem> lista = snapshot.requireData;
+                            return buildListViewImagem(lista);
+                          }
+                          return Center(child: CircularProgressIndicator(),);
+                        }
+                      )
                     ),
                   ],
                 ),
@@ -151,16 +152,16 @@ class _PesquisaState extends State<Pesquisa> {
                     ),
                     SizedBox(
                       height: 80,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listaBotaoDicas.length,
-                        itemBuilder: (context, i) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                            child: Cardbotaotexto(botaotexto: listaBotaoDicas[i]),
-                          );
-                        },
-                      ),
+                        child: FutureBuilder(
+                            future: listaBotaoDicas,
+                            builder: (context, snapshot){
+                              if(snapshot.hasData){
+                                List<Botaotexto> lista = snapshot.requireData;
+                                return buildListViewTexto(lista);
+                              }
+                              return Center(child: CircularProgressIndicator(),);
+                            }
+                        )
                     ),
 
                   ],
@@ -199,16 +200,16 @@ class _PesquisaState extends State<Pesquisa> {
                     ),
                     SizedBox(
                       height: 80,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listaBotaoArtigo.length,
-                        itemBuilder: (context, i) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                            child: Cardbotaotexto(botaotexto: listaBotaoArtigo[i]),
-                          );
-                        },
-                      ),
+                        child: FutureBuilder(
+                            future: listaBotaoArtigo,
+                            builder: (context, snapshot){
+                              if(snapshot.hasData){
+                                List<Botaotexto> lista = snapshot.requireData;
+                                return buildListViewTexto(lista);
+                              }
+                              return Center(child: CircularProgressIndicator(),);
+                            }
+                        )
                     ),
                   ],
                 ),
@@ -235,6 +236,32 @@ class _PesquisaState extends State<Pesquisa> {
           ],
         ),
       ),
+    );
+  }
+
+  buildListViewTexto(List<Botaotexto> listaBotao){
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: listaBotao.length,
+      itemBuilder: (context, i) {
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 4.0),
+          child: Cardbotaotexto(botaotexto: listaBotao[i]),
+        );
+      },
+    );
+  }
+
+  buildListViewImagem(List<Botaoimagem> listaBotao){
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: listaBotao.length,
+      itemBuilder: (context, i) {
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 4.0),
+          child: Cardbotaoimagem(botaoimagem: listaBotao[i]),
+        );
+      },
     );
   }
 }

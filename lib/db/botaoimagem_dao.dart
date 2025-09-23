@@ -10,7 +10,7 @@ class BotaoimagemDao{
 
     List<Botaoimagem> listaBotaoImagem = [];
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 5));
     for(var json in result){
       Botaoimagem botaoimagem = Botaoimagem.fromJson(json);
       listaBotaoImagem.add(botaoimagem);

@@ -9,7 +9,7 @@ class BotaotextoDao{
     var result = await db.rawQuery(sql);
 
     List<Botaotexto> listaBotaoArtigo = [];
-
+    await Future.delayed(Duration(seconds: 5));
     print(result);
     for(var json in result){
       Botaotexto botaotexto = Botaotexto.fromJson(json);
@@ -24,7 +24,7 @@ class BotaotextoDao{
     var result = await db.rawQuery(sql);
 
     List<Botaotexto> listaBotaoDicas = [];
-
+    await Future.delayed(Duration(seconds: 5));
 
     for(var json in result){
       Botaotexto botaotexto = Botaotexto.fromJson(json);
@@ -38,7 +38,7 @@ class BotaotextoDao{
     var result = await db.rawQuery(sql);
 
     List<Botaotexto> listaBotaoSobreCancer = [];
-
+    await Future.delayed(Duration(seconds: 5));
 
     for(var json in result){
       Botaotexto botaotexto = Botaotexto.fromJson(json);
