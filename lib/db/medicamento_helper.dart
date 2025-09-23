@@ -39,5 +39,8 @@ class DBHelper {
     sql = "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Ibuprofeno', '10:00', 'Amanhã');";
     await db.execute(sql);
 
+    sql = "INSERT INTO MEDICAMENTOS (nome, horario, data) VALUES ('Scaflogin', '12:00', 'Hoje');";
+    await db.execute(sql);
+    
   }
 }

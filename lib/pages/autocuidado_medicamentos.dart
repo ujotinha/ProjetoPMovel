@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import'package:flutter/material.dart';
+import 'package:projetointheirskin/domain/infoMedicamentos.dart';
 import 'package:projetointheirskin/widgets/CardMedicamento.dart';
 import '../db/medicamento_dao.dart';
 
@@ -12,7 +13,8 @@ class AutocuidadoMedicamentos extends StatefulWidget {
 
 class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
 
-  List listaMedicamentos = [];
+  //List listaMedicamentos = [];
+  late Future<List<Medicamento>> futurelistaMedicamentos;
 
   @override
   void initState() {
@@ -21,8 +23,8 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
   }
 
   loadData() async {
-    listaMedicamentos = await MedicamentosDao().listarMedicamentos();
-    setState(() {});
+    futurelistaMedicamentos = MedicamentosDao().listarMedicamentos();
+    //setState(() {});
   }
 
   @override
@@ -73,16 +75,31 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
             ),
             SizedBox(height: 10),
             Expanded(
-              child: ListView.builder(
-                itemCount: listaMedicamentos.length,
-                itemBuilder: (context, i){
-                  return CardMedicamento(medicamento: listaMedicamentos[i]);
+              child: FutureBuilder<List<Medicamento>>(
+                future: futurelistaMedicamentos,
+                builder:(context,snapshot){
+                  if(snapshot.hasData){
+                    List<Medicamento> lista = snapshot.requireData;
+                    return buildListView(lista);
+                  }
+                  return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f),));
                 },
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  buildListView(List<Medicamento> listaMedicamentos){
+    return ListView.builder(
+      itemCount: listaMedicamentos.length,
+      itemBuilder: (context,i){
+        return CardMedicamento(
+            medicamento: listaMedicamentos[i]
+        );
+      }
     );
   }
 

@@ -11,6 +11,8 @@ class MedicamentosDao {
 
     List<Medicamento> listaMedicamentos = [];
 
+    await Future.delayed(Duration(seconds: 5));
+
     // ForEach
     for (var json in result) {
       Medicamento medicamentos = Medicamento.fromJson(json);
