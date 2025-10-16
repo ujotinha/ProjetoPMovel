@@ -1,4 +1,5 @@
 import'package:flutter/material.dart';
+import 'package:projetointheirskin/api/remedio_api.dart';
 import 'package:projetointheirskin/domain/infoMedicamentos.dart';
 import 'package:projetointheirskin/widgets/CardMedicamento.dart';
 import '../db/medicamento_dao.dart';
@@ -23,7 +24,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
   }
 
   loadData() async {
-    futurelistaMedicamentos = MedicamentosDao().listarMedicamentos();
+    futurelistaMedicamentos = MedicamentoApi().findAll();
     //setState(() {});
   }
 
@@ -98,6 +99,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
       itemBuilder: (context,i){
         return CardMedicamento(
             medicamento: listaMedicamentos[i]
+
         );
       }
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/pages/autocuidado_medicamentos.dart';
+import 'package:projetointheirskin/pages/cadastrar_consultas.dart';
 
 
 class Homepage extends StatefulWidget {
