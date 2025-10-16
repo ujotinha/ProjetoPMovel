@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/api/botoes_api.dart';
 import 'package:projetointheirskin/db/botaoimagem_dao.dart';
 import 'package:projetointheirskin/db/botaotexto_dao.dart';
 import 'package:projetointheirskin/domain/BotaoImagem.dart';
@@ -25,10 +26,10 @@ class _PesquisaState extends State<Pesquisa> {
   }
 
   loadData() async {
-    listaBotaoArtigo = BotaotextoDao().listarBotaoArtigo();
-    listaBotaoDicas = BotaotextoDao().listarBotaoDicas();
-    listaBotaoSobreCancer = BotaotextoDao().listarBotaoSobreCancer();
-    listaBotaoVideo = BotaoimagemDao().listarBotaoImagem();
+    listaBotaoArtigo = BotoesApi().findAllArtigos();
+    listaBotaoDicas = BotoesApi().findAllDicas();
+    listaBotaoSobreCancer = BotoesApi().findAllSobreCancer();
+    listaBotaoVideo = BotoesApi().findAll();
     setState(() {});
   }
 
