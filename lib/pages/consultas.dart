@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/db/consulta_dao.dart';
+import 'package:projetointheirskin/domain/Consulta.dart';
 import 'package:projetointheirskin/widgets/CardConsulta.dart';
 
 class consultas extends StatefulWidget {
@@ -11,7 +12,8 @@ class consultas extends StatefulWidget {
 
 class _consultasState extends State<consultas> {
 
-  List listaconsultas = [];
+  //List listaconsultas = [];
+  late Future<List<Consulta>> futureListaconsultas;
 
   @override
   void initState() {
@@ -20,8 +22,8 @@ class _consultasState extends State<consultas> {
   }
 
   loadData() async {
-    listaconsultas = await ConsultaDao().listarconsulta();
-    setState(() {});
+    futureListaconsultas = ConsultaDao().listarconsulta();
+    //setState(() {});
   }
 
   @override
@@ -61,20 +63,21 @@ class _consultasState extends State<consultas> {
                             fontSize: 20, color: Color(0xFFc77b44))),
                   ],
                 ),
+
+                SizedBox(height: 10),
+
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: listaconsultas.length,
-                    itemBuilder: (context, i) {
-                      return Column(
-                        children: [
-                          CardConsulta(consulta: listaconsultas[i]),
-                          SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      );
-                    },
+                  child: FutureBuilder<List<Consulta>>(
+                    future: futureListaconsultas,
+                    builder: (context, snapshot){
+                    if (snapshot.hasData){
+                      List<Consulta> lista = snapshot.requireData;
+                      return buildListView(lista);
+                      }
+                    return Center(child: CircularProgressIndicator());
+                    }
                   ),
+
                 ),
               ],
             ),
@@ -83,6 +86,18 @@ class _consultasState extends State<consultas> {
       );
     }
   }
+
+  buildListView(List<Consulta> listconsultas){
+    return ListView.builder(
+      itemCount: listconsultas.length,
+      itemBuilder: (context, i){
+        return CardConsulta(
+          consulta: listconsultas[i]
+        );
+      },
+    );
+  }
+
   buildFloatingActionButton() {
     return FloatingActionButton(
       backgroundColor: Color(0xFFa5591f),

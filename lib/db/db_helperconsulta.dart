@@ -8,7 +8,6 @@ class DbHelperconsulta {
     String dbNameConsulta = 'consulta.db';
     String dbPath = join(path, dbNameConsulta);
 
-
     Database database = await openDatabase(
       dbPath,
       version: 1,
