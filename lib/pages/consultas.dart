@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/api/consultas_api.dart';
+import 'package:projetointheirskin/api/versiculo_api.dart';
 import 'package:projetointheirskin/db/consulta_dao.dart';
 import 'package:projetointheirskin/domain/Consulta.dart';
+import 'package:projetointheirskin/domain/Versiculo.dart';
 import 'package:projetointheirskin/widgets/CardConsulta.dart';
 
 class consultas extends StatefulWidget {
@@ -15,6 +17,7 @@ class _consultasState extends State<consultas> {
 
   //List listaconsultas = [];
   late Future<List<Consulta>> futureListaconsultas;
+  late Future<Versiculo> versiculoAleatorio;
 
   @override
   void initState() {
@@ -24,6 +27,7 @@ class _consultasState extends State<consultas> {
 
   loadData() async {
     futureListaconsultas = ConsultaApi().findAll();
+    versiculoAleatorio = VersiculoApi().findRandomVerse();
     //setState(() {});
   }
 
@@ -66,7 +70,6 @@ class _consultasState extends State<consultas> {
                 ),
 
                 SizedBox(height: 10),
-
                 Expanded(
                   child: FutureBuilder<List<Consulta>>(
                     future: futureListaconsultas,
