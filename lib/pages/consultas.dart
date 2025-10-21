@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/api/consultas_api.dart';
 import 'package:projetointheirskin/db/consulta_dao.dart';
 import 'package:projetointheirskin/domain/Consulta.dart';
 import 'package:projetointheirskin/widgets/CardConsulta.dart';
@@ -22,7 +23,7 @@ class _consultasState extends State<consultas> {
   }
 
   loadData() async {
-    futureListaconsultas = ConsultaDao().listarconsulta();
+    futureListaconsultas = ConsultaApi().findAll();
     //setState(() {});
   }
 
