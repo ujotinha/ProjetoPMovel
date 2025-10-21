@@ -62,6 +62,23 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                           ],
                         ),
                       ),
+                      SizedBox(height: 6,),
+                      Container(
+                        height: 20,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xFFdfceb4),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("17 anos",
+                                style: TextStyle(
+                                    color: Color(0xFF7b4a28), fontSize: 10)),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ],
