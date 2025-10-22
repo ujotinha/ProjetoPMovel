@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:projetointheirskin/domain/Notas.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/widgets/CardAnotacao.dart';
 
 class Anotacao extends StatefulWidget {
-  NotaDiario ?notaDiario;
+  Notas ?notas;
 
   Anotacao({
-    this.notaDiario,
+    this.notas,
     super.key,
   });
 
@@ -16,7 +16,7 @@ class Anotacao extends StatefulWidget {
 }
 
 class _AnotacaoState extends State<Anotacao> {
-  NotaDiario? get notaDiario => widget.notaDiario;
+  Notas? get notas => widget.notas;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _AnotacaoState extends State<Anotacao> {
               child: ListView.builder(
                 itemCount: 1,
                 itemBuilder: (context, i) {
-                  return CardAnotacao(notaDiario: notaDiario);
+                  return CardAnotacao(notas: notas);
                 },
               ),
             )

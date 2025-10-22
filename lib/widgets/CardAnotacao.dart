@@ -1,13 +1,13 @@
-import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:projetointheirskin/domain/Notas.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/pages/meu_diario.dart';
 
 class CardAnotacao extends StatefulWidget {
-  NotaDiario ?notaDiario;
+  Notas ?notas;
 
   CardAnotacao({
-    this.notaDiario,
+    this.notas,
     super.key,
   });
 
@@ -16,15 +16,15 @@ class CardAnotacao extends StatefulWidget {
 }
 
 class _CardAnotacaoState extends State<CardAnotacao> {
-  NotaDiario? get notaDiario => widget.notaDiario;
+  Notas? get notas => widget.notas;
   late String nomeNota;
   late String conteudo;
 
   @override
   void initState() {
-    if (widget.notaDiario != null) {
-      nomeNota = widget.notaDiario!.nome_Nota;
-      conteudo = widget.notaDiario!.Conteudo;
+    if (widget.notas != null) {
+      nomeNota = widget.notas!.nome_Nota;
+      conteudo = widget.notas!.Conteudo;
     } else {
       nomeNota = "";
       conteudo = "";

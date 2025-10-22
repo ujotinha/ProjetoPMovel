@@ -1,13 +1,13 @@
-import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:projetointheirskin/domain/Notas.dart';
 import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CardMeuDiario extends StatefulWidget {
-  NotaDiario notaDiario;
+  Notas notas;
 
   CardMeuDiario({
-    required this.notaDiario,
+    required this.notas,
     super.key,
   });
 
@@ -16,7 +16,7 @@ class CardMeuDiario extends StatefulWidget {
 }
 
 class _CardMeuDiarioState extends State<CardMeuDiario> {
-  NotaDiario get notaDiario => widget.notaDiario;
+  Notas get notas => widget.notas;
 
   @override
   void initState() {
@@ -25,7 +25,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
 
   @override
   Widget build(BuildContext context) {
-    String dataCompleta = notaDiario.Data_Escrita;
+    String dataCompleta = notas.Data_Escrita;
     List<String> partesData = dataCompleta.split('/');
 
     String dia = '';
@@ -75,7 +75,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => Anotacao(notaDiario: notaDiario,)),
+                  builder: (context) => Anotacao(notas: notas,)),
             );
           },
           style: ElevatedButton.styleFrom(
@@ -127,7 +127,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      notaDiario.nome_Nota,
+                      notas.nome_Nota,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.libreCaslonDisplay(
@@ -137,7 +137,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                       ),
                     ),
                     Text(
-                      notaDiario.Dia,
+                      notas.Dia,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.libreCaslonDisplay(
@@ -148,7 +148,7 @@ class _CardMeuDiarioState extends State<CardMeuDiario> {
                     ),
                     Divider(color: Color(0xFFa5591f)),
                     Text(
-                      notaDiario.Conteudo,
+                      notas.Conteudo,
                       textAlign: TextAlign.start,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/db/meudiario_dao.dart';
+import 'package:projetointheirskin/api/Notas_api.dart';
 import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +26,7 @@ class _MeuDiarioState extends State<MeuDiario> {
   }
 
   loadData() async {
-    listaNotas = await MeuDiarioDao().listarNotas();
+    listaNotas = await NotasApi().findAll();
     setState(() {});
   }
 
@@ -98,7 +98,7 @@ class _MeuDiarioState extends State<MeuDiario> {
                   child: ListView.builder(
                     itemCount: listaNotas.length,
                     itemBuilder: (context, i) {
-                      return CardMeuDiario(notaDiario: listaNotas[i],);
+                      return CardMeuDiario(notas: listaNotas[i],);
                     },
                   ),
                 )
