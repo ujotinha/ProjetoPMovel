@@ -1,8 +1,10 @@
 import'package:flutter/material.dart';
+import 'package:projetointheirskin/api/clima_api.dart';
 import 'package:projetointheirskin/api/remedio_api.dart';
 import 'package:projetointheirskin/domain/infoMedicamentos.dart';
 import 'package:projetointheirskin/widgets/CardMedicamento.dart';
 import '../db/medicamento_dao.dart';
+import '../domain/infoClima.dart';
 
 class AutocuidadoMedicamentos extends StatefulWidget {
   const AutocuidadoMedicamentos({super.key});
@@ -16,6 +18,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
 
   //List listaMedicamentos = [];
   late Future<List<Medicamento>> futurelistaMedicamentos;
+  late Future<InfoClima> futureclima;
 
   @override
   void initState() {
@@ -25,6 +28,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
 
   loadData() async {
     futurelistaMedicamentos = MedicamentoApi().findAll();
+    futureclima = ClimaApi().getInfoClima();
     //setState(() {});
   }
 
@@ -60,6 +64,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
             color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(10)),
         height: double.infinity,
         width: double.infinity,
+
         child: Column(
           children: [
             Row(
@@ -76,15 +81,40 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
             ),
             SizedBox(height: 10),
             Expanded(
-              child: FutureBuilder<List<Medicamento>>(
-                future: futurelistaMedicamentos,
-                builder:(context,snapshot){
-                  if(snapshot.hasData){
-                    List<Medicamento> lista = snapshot.requireData;
-                    return buildListView(lista);
-                  }
-                  return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f),));
-                },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    FutureBuilder<List<Medicamento>>(
+                      future: futurelistaMedicamentos,
+                      builder:(context,snapshot){
+                        if(snapshot.hasData){
+                          List<Medicamento> lista = snapshot.requireData;
+                          return buildListView(lista);
+                        }
+                        return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f),));
+                      },
+                    ),
+                    SizedBox(
+                      child: FutureBuilder<InfoClima>(
+                          future: futureclima,
+                          builder: (context, snapshot) {
+                            /*
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return Center(
+                                  child: CircularProgressIndicator(
+                                      color: Color(0xFFa5591f)));
+                            }
+                            */
+                            if (snapshot.hasData) {
+                              InfoClima clima = snapshot.data!;
+                              return buildClimaContainer(clima);
+                            }
+
+                            return Container();
+                          }),
+                    )
+                  ],
+                ),
               ),
             ),
           ],
@@ -93,15 +123,87 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
     );
   }
 
+  buildClimaContainer(InfoClima infoclima) {
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Color(0xFFe0d4bd), // Cor similar a da AppBar
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        children: [
+          Text(
+            infoclima.cidade,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFFa5591f),
+            ),
+          ),
+          SizedBox(height: 8),
+          Text(
+            '${infoclima.temperatura.toStringAsFixed(0)}°C',
+            style: TextStyle(
+              fontSize: 48,
+              fontWeight: FontWeight.w300,
+              color: Color(0xFFa5591f),
+            ),
+          ),
+          Text(
+            infoclima.condicao,
+            style: TextStyle(
+              fontSize: 18,
+              color: Color(0xFFc77b44),
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildClimaDetail('Sensação', '${infoclima.sensacao.toStringAsFixed(0)}°C'),
+              _buildClimaDetail('Umidade', '${infoclima.umidade}%'),
+              _buildClimaDetail('Índice UV', '${infoclima.indiceUv}'),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildClimaDetail(String label, String value) {
+    return Column(
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            color: Color(0xFFa5591f),
+          ),
+        ),
+        SizedBox(height: 4),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFa5591f),
+          ),
+        ),
+      ],
+    );
+  }
+
   buildListView(List<Medicamento> listaMedicamentos){
     return ListView.builder(
-      itemCount: listaMedicamentos.length,
-      itemBuilder: (context,i){
-        return CardMedicamento(
-            medicamento: listaMedicamentos[i]
-
-        );
-      }
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: listaMedicamentos.length,
+        itemBuilder: (context,i){
+          return CardMedicamento(
+              medicamento: listaMedicamentos[i]
+          );
+        }
     );
   }
 

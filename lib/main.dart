@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:projetointheirskin/pages/autocuidado_medicamentos.dart';
 import 'package:projetointheirskin/pages/inicio.dart';
+import 'package:weatherapi/weatherapi.dart';
 
 
 void main() {
