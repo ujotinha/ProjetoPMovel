@@ -7,7 +7,7 @@ class IdadeApi {
   String baseUrl = 'https://api.apiverve.com/v1';
   final String _apiKey = 'e8d7200c-24ec-4ee3-920c-cb96140b35d2';
 
-  Future<Idade> findByCep(String dob) async {
+  Future<Idade> findByDate(String dob) async {
     final response = await dio.get(
       '$baseUrl/agecalculator',
       queryParameters: {

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CardBotaoCuidarPaciente extends StatefulWidget {
-
   @override
   State<CardBotaoCuidarPaciente> createState() =>
       _CardBotaoCuidarPacienteState();
 }
 
 class _CardBotaoCuidarPacienteState extends State<CardBotaoCuidarPaciente> {
-
   @override
   Widget build(BuildContext context) {
     return Container(

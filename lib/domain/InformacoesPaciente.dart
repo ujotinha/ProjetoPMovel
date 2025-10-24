@@ -1,4 +1,4 @@
-class InfoPaciente{
+class InfoPaciente {
   late String nome_Paciente;
   late String Data_Nascimento;
   late String Cpf;
@@ -17,5 +17,4 @@ class InfoPaciente{
     Cpf = json['cpf'];
     Diagnostico = json['diagnostico'];
   }
-
 }

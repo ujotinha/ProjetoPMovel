@@ -1,4 +1,3 @@
-
 import 'package:projetointheirskin/domain/InformacoesPaciente-APIFake.dart';
 import 'package:flutter/material.dart';
 

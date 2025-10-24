@@ -1,4 +1,4 @@
-class InfoPacienteApiFake{
+class InfoPacienteApiFake {
   late String nome_Paciente;
   late String Data_Nascimento;
   late String Cpf;
@@ -27,5 +27,3 @@ class InfoPacienteApiFake{
     return data;
   }
 }
-
-

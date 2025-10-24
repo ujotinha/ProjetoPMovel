@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/api/InformacoesPacienteApi.dart';
+import 'package:projetointheirskin/domain/InformacoesPaciente-APIFake.dart';
 import 'package:projetointheirskin/widgets/CardBotaoCuidarPaciente.dart';
 import 'package:projetointheirskin/widgets/CardInformacoesPaciente.dart';
 import 'package:projetointheirskin/widgets/CardPlanoTratamento.dart';
@@ -12,7 +13,7 @@ class Pacientes extends StatefulWidget {
 }
 
 class _PacientesState extends State<Pacientes> {
-  List listaInformacoes = [];
+  late Future<List<InfoPacienteApiFake>> futureListaInformacoes;
 
   @override
   void initState() {
@@ -21,8 +22,7 @@ class _PacientesState extends State<Pacientes> {
   }
 
   loadData() async {
-    listaInformacoes = await InfoPacienteApi().findAll();
-    setState(() {});
+    futureListaInformacoes = InfoPacienteApi().findAll();
   }
 
   @override
@@ -35,36 +35,45 @@ class _PacientesState extends State<Pacientes> {
         height: double.infinity,
         decoration: BoxDecoration(
             color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: listaInformacoes.length,
-                itemBuilder: (context, i) {
-                  return Column(
-                    children: [
-                      CardInformacoesPaciente(
-                        infoPaciente: listaInformacoes[i],
-                      ),
-                      SizedBox(
-                        height: 25,
-                      ),
-                      CardPlanoTratamento(
-                        infoPaciente: listaInformacoes[i],
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Center(
-                        child: CardBotaoCuidarPaciente(),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-          ],
+        child: FutureBuilder<List<InfoPacienteApiFake>>(
+          future: futureListaInformacoes,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<InfoPacienteApiFake> lista = snapshot.requireData;
+              return buildListView(lista);
+            }
+            return Center(child: CircularProgressIndicator());
+          },
         ),
+      ),
+    );
+  }
+
+  buildListView(List<InfoPacienteApiFake> listaInformacoes) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: listaInformacoes.length,
+        itemBuilder: (context, i) {
+          return Column(
+            children: [
+              CardInformacoesPaciente(
+                infoPaciente: listaInformacoes[i],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              CardPlanoTratamento(
+                infoPaciente: listaInformacoes[i],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Center(
+                child: CardBotaoCuidarPaciente(),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

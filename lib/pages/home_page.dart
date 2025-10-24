@@ -16,36 +16,37 @@ class _HomepageState extends State<Homepage> {
     Pacientes(),
     Pacientes(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Color(0xFFe7ddc9),
-          appBar: buildAppBar(),
-          body: pages[selectedIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            backgroundColor: Color(0xFFc77b44),
-            unselectedItemColor: Colors.white,
-            selectedItemColor: Colors.white,
-            selectedLabelStyle: TextStyle(fontSize: 10),
-            showUnselectedLabels: false,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite), label: "Autocuidado"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book), label: 'Pesquisa'),
-              BottomNavigationBarItem(icon: Icon(Icons.groups), label: 'Pacientes'),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
-            ],
-          ),
-        ));
+      backgroundColor: Color(0xFFe7ddc9),
+      appBar: buildAppBar(),
+      body: pages[selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        backgroundColor: Color(0xFFc77b44),
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.white,
+        selectedLabelStyle: TextStyle(fontSize: 10),
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Autocuidado"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.menu_book), label: 'Pesquisa'),
+          BottomNavigationBarItem(icon: Icon(Icons.groups), label: 'Pacientes'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Personagem')
+        ],
+      ),
+    ));
   }
 
   buildAppBar() {

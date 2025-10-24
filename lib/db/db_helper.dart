@@ -22,7 +22,6 @@ class DBHelper {
   Future<void> onCreate(Database db, int version) async {
     print('onCreate foi chamado!');
 
-
     String sql_pacientes = '''CREATE TABLE INFORMACOES_PACIENTE (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nomePaciente TEXT,
@@ -38,6 +37,5 @@ class DBHelper {
         "INSERT INTO INFORMACOES_PACIENTE (nomePaciente, dt_nasc, cpf, diagnostico) VALUES ('José Rodrigues Silva', '17/02/1983', '123.456.147-01', 'Paciente apresenta tosse persistente há mais de 3 meses, hemoptise, perda de peso significativa e dor torácica. Exame de imagem (tomografia) evidenciou massa pulmonar no lobo superior direito, confirmada por biópsia como carcinoma de células não pequenas.');";
     await db.execute(sql_joserodrigues);
     print('NOME inserido');
-
   }
 }
