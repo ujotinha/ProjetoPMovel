@@ -1,8 +1,9 @@
-import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
+
+import 'package:projetointheirskin/domain/InformacoesPaciente-APIFake.dart';
 import 'package:flutter/material.dart';
 
 class CardPlanoTratamento extends StatefulWidget {
-  InfoPaciente infoPaciente;
+  InfoPacienteApiFake infoPaciente;
 
   CardPlanoTratamento({
     required this.infoPaciente,
@@ -14,7 +15,7 @@ class CardPlanoTratamento extends StatefulWidget {
 }
 
 class _CardPlanoTratamentoState extends State<CardPlanoTratamento> {
-  InfoPaciente get infoPaciente => widget.infoPaciente;
+  InfoPacienteApiFake get infoPaciente => widget.infoPaciente;
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
+import 'package:projetointheirskin/domain/InformacoesPaciente-APIFake.dart';
+import 'package:projetointheirskin/api/IdadeApi.dart';
+import 'package:projetointheirskin/domain/Idade.dart';
 
 class CardInformacoesPaciente extends StatefulWidget {
-  InfoPaciente infoPaciente;
-
+  InfoPacienteApiFake infoPaciente;
   CardInformacoesPaciente({
     required this.infoPaciente,
     super.key,
@@ -15,9 +16,19 @@ class CardInformacoesPaciente extends StatefulWidget {
 }
 
 class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
-  InfoPaciente get infoPaciente => widget.infoPaciente;
+  InfoPacienteApiFake get infoPaciente => widget.infoPaciente;
+
+  late final IdadeApi _ageApi;
+  late final Future<Idade> _futureAge;
 
   @override
+  void initState() {
+    super.initState();
+    _ageApi = IdadeApi();
+    final partes = infoPaciente.Data_Nascimento.split('/');
+    final String dataFormatada = '${partes[2]}-${partes[1]}-${partes[0]}';
+    _futureAge = _ageApi.findByCep(dataFormatada);
+  }
   Widget build(BuildContext context) {
     return Container(
       child: Column(
@@ -63,21 +74,55 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                         ),
                       ),
                       SizedBox(height: 6,),
-                      Container(
-                        height: 20,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xFFdfceb4),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("17 anos",
-                                style: TextStyle(
-                                    color: Color(0xFF7b4a28), fontSize: 10)),
-                          ],
-                        ),
+                      FutureBuilder<Idade>(
+                        future: _futureAge, // O Future que criamos no initState
+                        builder: (context, snapshot) {
+
+                          Widget childWidget;
+
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            childWidget = SizedBox(
+                              height: 10,
+                              width: 10,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.0,
+                                color: Color(0xFF7b4a28),
+                              ),
+                            );
+                          } else if (snapshot.hasError) {
+                            childWidget = Text(
+                              "Erro",
+                              style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10),
+                            );
+                          } else if (snapshot.hasData) {
+                            // 6. ACESSA O CAMPO 'anos' DO OBJETO 'Idade' // <-- MUDANÇA
+                            final Idade idade = snapshot.data!;
+                            childWidget = Text(
+                              "${idade.anos} anos", // <-- MUDANÇA
+                              style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10),
+                            );
+                          } else {
+                            childWidget = Text(
+                              "- anos",
+                              style: TextStyle(color: Color(0xFF7b4a28), fontSize: 10),
+                            );
+                          }
+
+                          return Container(
+                            height: 20,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Color(0xFFdfceb4),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                childWidget,
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

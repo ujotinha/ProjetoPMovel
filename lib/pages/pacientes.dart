@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/db/pacientes_dao.dart';
+import 'package:projetointheirskin/api/InformacoesPacienteApi.dart';
 import 'package:projetointheirskin/widgets/CardBotaoCuidarPaciente.dart';
 import 'package:projetointheirskin/widgets/CardInformacoesPaciente.dart';
 import 'package:projetointheirskin/widgets/CardPlanoTratamento.dart';
@@ -21,7 +21,7 @@ class _PacientesState extends State<Pacientes> {
   }
 
   loadData() async {
-    listaInformacoes = await PacientesDao().listarPacientes();
+    listaInformacoes = await InfoPacienteApi().findAll();
     setState(() {});
   }
 
