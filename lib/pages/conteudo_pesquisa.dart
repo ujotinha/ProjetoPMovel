@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 
+import '../domain/BotaoTexto.dart';
+
 class ConteudoPesquisa extends StatefulWidget {
-  const ConteudoPesquisa({super.key});
+
+  Botaotexto botaotexto;
+
+  ConteudoPesquisa({
+    required this.botaotexto,
+    super.key
+  });
 
   @override
   State<ConteudoPesquisa> createState() => _ConteudoPesquisaState();
 }
 
 class _ConteudoPesquisaState extends State<ConteudoPesquisa> {
+  Botaotexto get botaotexto => widget.botaotexto;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,6 +29,26 @@ class _ConteudoPesquisaState extends State<ConteudoPesquisa> {
           width: double.infinity,
           child: Column(
             children: [
+                SizedBox(
+                  height: 500,
+                  width: double.infinity,
+                  child: ListView(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(botaotexto.titulo, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Color(0xFFc77b44)),)
+                        ],
+                      ),
+                      Text(botaotexto.texto, style: TextStyle(color: Color(0xFFc77b44)),),
+                      Image.network(
+                        "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${botaotexto.url}",
+                        height: 80,
+                        width: 80,
+                      )
+                    ],
+                  ),
+                ),
 
               ],
             ),

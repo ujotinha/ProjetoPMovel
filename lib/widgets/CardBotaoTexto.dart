@@ -26,7 +26,7 @@ class _CardbotaotextoState extends State<Cardbotaotexto> {
       width: 110,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>ConteudoPesquisa()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>ConteudoPesquisa(botaotexto: botaotexto,)));
         },
         style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xFFc18e67),

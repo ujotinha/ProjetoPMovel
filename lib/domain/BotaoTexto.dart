@@ -1,5 +1,7 @@
 class Botaotexto{
   late String titulo;
+  late String url;
+  late String texto;
 
   Botaotexto({
     required this.titulo
@@ -7,6 +9,8 @@ class Botaotexto{
 
   Botaotexto.fromJson(Map<String, dynamic> json) {
     titulo = json['titulo'];
+    url = json['url'];
+    texto = json['texto'];
   }
 
   Map<String, dynamic> toJson() {
