@@ -74,11 +74,19 @@ class _consultasState extends State<consultas> {
                     if (snapshot.hasData) {
                       Versiculo versiculo = snapshot.requireData;
                       return Card(
+                        color: Color(0xFFE0D4BD),
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Column(
                             children: [
-                              Text("${versiculo.livro} ${versiculo.capitulo}:${versiculo.numero_versiculo} ${versiculo.texto}")
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children:[
+                                  Text("${versiculo.livro} ${versiculo.capitulo}:${versiculo.numero_versiculo} ${versiculo.texto}", style: TextStyle(color: Color( 0XFF7b4a28), fontSize: 13)),
+                                  Icon(Icons.favorite, color: Color(0xffcc1d1d),
+                                    size: 25, ),
+                          ]
+                              )
                             ],
                           ),
                         ),
