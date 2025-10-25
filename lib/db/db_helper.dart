@@ -41,6 +41,5 @@ class DBHelper {
         "INSERT INTO MEU_DIARIO (nomeNota, dt_escrita, dia, conteudo) VALUES ('Minha segunda consulta', '20/08/2025', 'Qua.', 'A minha segunda consulta foi ótima, o Dr. Tiago é um amor de pessoa e me deixou confortável o tempo inteiro. Com certeza eu irei voltar para realizar outra consulta.');";
     await db.execute(sql_nota2);
     print('NOTA inserido');
-
   }
 }

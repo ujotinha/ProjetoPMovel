@@ -3,7 +3,8 @@ import 'package:projetointheirskin/api/Notas_api.dart';
 import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projetointheirskin/widgets/cardMeuDiario.dart';
+import 'package:projetointheirskin/widgets/CardMeuDiario.dart';
+import 'package:projetointheirskin/domain/Notas.dart';
 
 
 class MeuDiario extends StatefulWidget {
@@ -17,7 +18,7 @@ class MeuDiario extends StatefulWidget {
 }
 
 class _MeuDiarioState extends State<MeuDiario> {
-  List listaNotas = [];
+  late Future<List<Notas>> futureListaNotas;
 
   @override
   void initState() {
@@ -26,7 +27,7 @@ class _MeuDiarioState extends State<MeuDiario> {
   }
 
   loadData() async {
-    listaNotas = await NotasApi().findAll();
+    futureListaNotas = NotasApi().findAll();
     setState(() {});
   }
 
@@ -95,10 +96,14 @@ class _MeuDiarioState extends State<MeuDiario> {
                   ],
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: listaNotas.length,
-                    itemBuilder: (context, i) {
-                      return CardMeuDiario(notas: listaNotas[i],);
+                  child: FutureBuilder<List<Notas>>(
+                    future: futureListaNotas,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List<Notas> lista = snapshot.requireData;
+                        return buildListView(lista);
+                      }
+                      return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f),));
                     },
                   ),
                 )
@@ -121,6 +126,15 @@ class _MeuDiarioState extends State<MeuDiario> {
         Icons.add,
         color: Colors.white,
       ),
+    );
+  }
+
+  buildListView(List<Notas> listaNotas) {
+    return  ListView.builder(
+        itemCount: listaNotas.length,
+        itemBuilder: (context, i) {
+          return CardMeuDiario(notas: listaNotas[i],);
+        },
     );
   }
 }

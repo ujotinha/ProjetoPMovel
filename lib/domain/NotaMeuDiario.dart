@@ -1,4 +1,4 @@
-class NotaDiario{
+class NotaDiario {
   late String nome_Nota;
   late String Data_Escrita;
   late String Dia;
@@ -11,7 +11,7 @@ class NotaDiario{
     required this.Conteudo,
   });
 
- NotaDiario.fromJson(Map<String, dynamic> json) {
+  NotaDiario.fromJson(Map<String, dynamic> json) {
     nome_Nota = json['nomeNota'];
     Data_Escrita = json['dt_escrita'];
     Dia = json['dia'];

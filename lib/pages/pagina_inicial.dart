@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/pages/autocuidado_medicamento.dart';
 import 'package:projetointheirskin/pages/meu_diario.dart'; // Importe a página do diário
 
 class PaginaInicial extends StatelessWidget {
@@ -112,10 +111,6 @@ class PaginaInicial extends StatelessWidget {
                         width: 155,
                         child: ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const AutocuidadoMedicamentos()),
-                              );
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Color(0xFFdfceb4),

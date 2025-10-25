@@ -1,10 +1,12 @@
+import 'dart:ui';
 import 'package:projetointheirskin/domain/Notas.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/pages/meu_diario.dart';
+import 'package:projetointheirskin/widgets/CardCuriosidade.dart';
 
 class CardAnotacao extends StatefulWidget {
-  Notas ?notas;
+  Notas? notas;
 
   CardAnotacao({
     this.notas,
@@ -32,6 +34,19 @@ class _CardAnotacaoState extends State<CardAnotacao> {
     super.initState();
   }
 
+  void _mostrarCuriosidade(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.black.withOpacity(0.1),
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: CardCuriosidade(),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -48,11 +63,19 @@ class _CardAnotacaoState extends State<CardAnotacao> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => MeuDiario()),
+                        MaterialPageRoute(builder: (context) => MeuDiario()),
                       );
                     },
                     icon: Icon(Icons.chevron_left),
+                    color: Color(0xFFc77b44),
+                    iconSize: 30,
+                  ),
+                  Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      _mostrarCuriosidade(context);
+                    },
+                    icon: Icon(Icons.lightbulb_outlined),
                     color: Color(0xFFc77b44),
                     iconSize: 30,
                   ),

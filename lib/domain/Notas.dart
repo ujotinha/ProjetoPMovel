@@ -1,4 +1,4 @@
-class Notas{
+class Notas {
   late String nome_Nota;
   late String Data_Escrita;
   late String Dia;
