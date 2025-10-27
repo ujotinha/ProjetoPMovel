@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/domain/InformacoesPaciente-APIFake.dart';
+import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
 import 'package:projetointheirskin/api/IdadeApi.dart';
 import 'package:projetointheirskin/domain/Idade.dart';
 
 class CardInformacoesPaciente extends StatefulWidget {
-  InfoPacienteApiFake infoPaciente;
+  InfoPaciente infoPaciente;
 
   CardInformacoesPaciente({
     required this.infoPaciente,
@@ -17,7 +17,7 @@ class CardInformacoesPaciente extends StatefulWidget {
 }
 
 class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
-  InfoPacienteApiFake get infoPaciente => widget.infoPaciente;
+  InfoPaciente get infoPaciente => widget.infoPaciente;
 
   late final IdadeApi _ageApi;
   late final Future<Idade> _futureAge;
@@ -95,7 +95,7 @@ class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
                           if (snapshot.hasData) {
                             Idade idade = snapshot.requireData;
                             childWidget = Text(
-                              "${idade.anos} anos",
+                              "${idade.idade} anos",
                               style: TextStyle(
                                   color: Color(0xFF7b4a28), fontSize: 10),
                             );

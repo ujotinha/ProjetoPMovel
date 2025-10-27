@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/api/InformacoesPacienteApi.dart';
-import 'package:projetointheirskin/domain/InformacoesPaciente-APIFake.dart';
+import 'package:projetointheirskin/domain/InformacoesPaciente.dart';
 import 'package:projetointheirskin/widgets/CardBotaoCuidarPaciente.dart';
 import 'package:projetointheirskin/widgets/CardInformacoesPaciente.dart';
 import 'package:projetointheirskin/widgets/CardPlanoTratamento.dart';
@@ -13,7 +13,7 @@ class Pacientes extends StatefulWidget {
 }
 
 class _PacientesState extends State<Pacientes> {
-  late Future<List<InfoPacienteApiFake>> futureListaInformacoes;
+  late Future<List<InfoPaciente>> futureListaInformacoes;
 
   @override
   void initState() {
@@ -35,11 +35,11 @@ class _PacientesState extends State<Pacientes> {
         height: double.infinity,
         decoration: BoxDecoration(
             color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
-        child: FutureBuilder<List<InfoPacienteApiFake>>(
+        child: FutureBuilder<List<InfoPaciente>>(
           future: futureListaInformacoes,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<InfoPacienteApiFake> lista = snapshot.requireData;
+              List<InfoPaciente> lista = snapshot.requireData;
               return buildListView(lista);
             }
             return Center(child: CircularProgressIndicator());
@@ -49,7 +49,7 @@ class _PacientesState extends State<Pacientes> {
     );
   }
 
-  buildListView(List<InfoPacienteApiFake> listaInformacoes) {
+  buildListView(List<InfoPaciente> listaInformacoes) {
     return Expanded(
       child: ListView.builder(
         itemCount: listaInformacoes.length,

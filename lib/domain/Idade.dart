@@ -1,24 +1,12 @@
 class Idade {
-  late final int anos;
-  late final int meses;
-  late final int dias;
-  late final int totaldias;
-  late final String dob;
+  late final int idade;
 
   Idade({
-    required this.anos,
-    required this.meses,
-    required this.dias,
-    required this.totaldias,
-    required this.dob,
+    required this.idade,
   });
 
   Idade.fromJson(Map<String, dynamic> json) {
-    Map<String, dynamic> breakdown = json['age_breakdown'];
-    anos = breakdown['years'];
-    meses = breakdown['months'];
-    dias = breakdown['days'];
-    totaldias = breakdown['days'];
-    dob = json['dob'];
+    Map<String, dynamic> data = json['data'];
+    idade = data['age_breakdown']['years'];
   }
 }

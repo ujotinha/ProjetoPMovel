@@ -15,13 +15,13 @@ class IdadeApi {
       },
       options: Options(
         headers: {
-          'x-api-key': _apiKey,
+          'X-API-Key': _apiKey,
         },
       ),
     );
 
-    var jsonData = jsonDecode(response.data.toString());
-    Map<String, dynamic> dadosDaIdade = jsonData['data'];
-    return Idade.fromJson(dadosDaIdade);
+    Map<String, dynamic> resposta = jsonDecode(response.data);
+    Idade idade = Idade.fromJson(resposta);
+    return idade;
   }
 }
