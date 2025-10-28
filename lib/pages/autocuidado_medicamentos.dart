@@ -98,20 +98,13 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
                       child: FutureBuilder<InfoClima>(
                           future: futureclima,
                           builder: (context, snapshot) {
-                            /*
-                            if (snapshot.connectionState == ConnectionState.waiting) {
-                              return Center(
-                                  child: CircularProgressIndicator(
-                                      color: Color(0xFFa5591f)));
-                            }
-                            */
                             if (snapshot.hasData) {
-                              InfoClima clima = snapshot.data!;
+                              InfoClima clima = snapshot.requireData;
                               return buildClimaContainer(clima);
                             }
-
                             return Container();
-                          }),
+                          }
+                          ),
                     )
                   ],
                 ),
@@ -127,7 +120,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Color(0xFFe0d4bd), // Cor similar a da AppBar
+        color: Color(0xFFe0d4bd),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Column(
@@ -161,9 +154,9 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildClimaDetail('Sensação', '${infoclima.sensacao.toStringAsFixed(0)}°C'),
-              _buildClimaDetail('Umidade', '${infoclima.umidade}%'),
-              _buildClimaDetail('Índice UV', '${infoclima.indiceUv}'),
+              buildClimaDetalhes('Sensação', '${infoclima.sensacao.toStringAsFixed(0)}°C'),
+              buildClimaDetalhes('Umidade', '${infoclima.umidade}%'),
+              buildClimaDetalhes('Índice UV', '${infoclima.indiceUv}'),
             ],
           ),
         ],
@@ -171,11 +164,11 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
     );
   }
 
-  Widget _buildClimaDetail(String label, String value) {
+  buildClimaDetalhes(String nome, String valor) {
     return Column(
       children: [
         Text(
-          label,
+          nome,
           style: TextStyle(
             fontSize: 14,
             color: Color(0xFFa5591f),
@@ -183,7 +176,7 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
         ),
         SizedBox(height: 4),
         Text(
-          value,
+          valor,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,

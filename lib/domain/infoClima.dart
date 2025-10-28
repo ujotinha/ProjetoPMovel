@@ -26,5 +26,6 @@ class InfoClima {
     umidade = currentJson['humidity'];
     sensacao = currentJson['feelslike_c'];
     indiceUv = currentJson['uv'];
+
   }
 }

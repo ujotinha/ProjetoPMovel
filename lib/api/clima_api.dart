@@ -9,7 +9,6 @@ class ClimaApi{
     final response = await dio.get(baseUrl);
 
     InfoClima infoclima = InfoClima.fromJson(response.data);
-    print(infoclima);
 
     return infoclima;
   }
