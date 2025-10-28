@@ -22,7 +22,7 @@ class _CardCuriosidadeState extends State<CardCuriosidade> {
   void _fetchCuriosity() {
     final api = CuriosidadeApi();
     final now = DateTime.now();
-    // Inicia a chamada da API e armazena o Future
+
     _curiosityFuture =
         api.findByDay();
   }
@@ -42,23 +42,31 @@ class _CardCuriosidadeState extends State<CardCuriosidade> {
           fontWeight: FontWeight.bold,
         ),
       ),
-      content: FutureBuilder<Curiosidade>(
-        future: _curiosityFuture,
-        builder: (context, snapshot) {
+      content: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: 500, // Define a altura máxima como 150 pixels
+        ),
+        child: SingleChildScrollView(
+          child: FutureBuilder<Curiosidade>(
+            future: _curiosityFuture,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final curiosidade = snapshot.data!;
+                return Text(
+                  'Nesse mesmo dia em ${curiosidade.year} - ${curiosidade.text} \n${curiosidade.textExtract}',
+                  style: GoogleFonts.libreCaslonDisplay(
+                    color: const Color(0xFFa5591f),
+                    fontSize: 16,
+                  ),
+                );
+              }
 
-          if (snapshot.hasData) {
-            final curiosidade = snapshot.data!;
-            return Text(
-              'Nesse mesmo dia em ${curiosidade.year} - ${curiosidade.text} \n${curiosidade.textExtract}',
-              style: GoogleFonts.libreCaslonDisplay(
-                color: const Color(0xFFa5591f),
-                fontSize: 16,
-              ),
-            );
-          }
-
-          return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f),));
-        }
+              return const Center(
+                child: CircularProgressIndicator(color: Color(0xFFa5591f)),
+              );
+            },
+          ),
+        ),
       ),
       actions: [
         TextButton(

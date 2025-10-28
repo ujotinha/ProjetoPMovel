@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/api/Notas_api.dart';
+import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
 import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/widgets/CardMeuDiario.dart';
-import 'package:projetointheirskin/domain/Notas.dart';
 
 
 class MeuDiario extends StatefulWidget {
@@ -18,7 +18,7 @@ class MeuDiario extends StatefulWidget {
 }
 
 class _MeuDiarioState extends State<MeuDiario> {
-  late Future<List<Notas>> futureListaNotas;
+  late Future<List<NotaDiario>> futureListaNotas;
 
   @override
   void initState() {
@@ -96,11 +96,11 @@ class _MeuDiarioState extends State<MeuDiario> {
                   ],
                 ),
                 Expanded(
-                  child: FutureBuilder<List<Notas>>(
+                  child: FutureBuilder<List<NotaDiario>>(
                     future: futureListaNotas,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        List<Notas> lista = snapshot.requireData;
+                        List<NotaDiario> lista = snapshot.requireData;
                         return buildListView(lista);
                       }
                       return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f),));
@@ -129,7 +129,7 @@ class _MeuDiarioState extends State<MeuDiario> {
     );
   }
 
-  buildListView(List<Notas> listaNotas) {
+  buildListView(List<NotaDiario> listaNotas) {
     return  ListView.builder(
         itemCount: listaNotas.length,
         itemBuilder: (context, i) {
