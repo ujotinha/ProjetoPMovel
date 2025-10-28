@@ -19,16 +19,14 @@ class CardInformacoesPaciente extends StatefulWidget {
 class _CardInformacoesPacienteState extends State<CardInformacoesPaciente> {
   InfoPaciente get infoPaciente => widget.infoPaciente;
 
-  late final IdadeApi _ageApi;
   late final Future<Idade> _futureAge;
 
   @override
   void initState() {
     super.initState();
-    _ageApi = IdadeApi();
     final partes = infoPaciente.Data_Nascimento.split('/');
     final String dataFormatada = '${partes[2]}-${partes[1]}-${partes[0]}';
-    _futureAge = _ageApi.findByDate(dataFormatada);
+    _futureAge = IdadeApi().findByDate(dataFormatada);
   }
 
   Widget build(BuildContext context) {

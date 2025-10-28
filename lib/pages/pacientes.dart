@@ -35,6 +35,7 @@ class _PacientesState extends State<Pacientes> {
         height: double.infinity,
         decoration: BoxDecoration(
             color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
+
         child: FutureBuilder<List<InfoPaciente>>(
           future: futureListaInformacoes,
           builder: (context, snapshot) {

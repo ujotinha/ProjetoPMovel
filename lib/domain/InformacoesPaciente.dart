@@ -10,7 +10,7 @@ class InfoPaciente {
     required this.Cpf,
     required this.Diagnostico,
   });
-
+//met
   InfoPaciente.fromJson(Map<String, dynamic> json) {
     nome_Paciente = json['nomePaciente'];
     Data_Nascimento = json['dt_nasc'];
