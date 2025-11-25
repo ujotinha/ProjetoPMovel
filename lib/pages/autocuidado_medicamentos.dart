@@ -17,6 +17,7 @@ class AutocuidadoMedicamentos extends StatefulWidget {
 class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
 
   //List listaMedicamentos = [];
+  
   late Future<List<Medicamento>> futurelistaMedicamentos;
   late Future<InfoClima> futureclima;
 
