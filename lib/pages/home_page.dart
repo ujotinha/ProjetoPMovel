@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:projetointheirskin/pages/pacientes.dart';
+import 'package:projetointheirskin/googleMaps/google_maps.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -61,9 +65,22 @@ class _HomepageState extends State<Homepage> {
       centerTitle: false,
       title: Image.asset("assets/logo.png", height: 40, width: 70),
       actions: [
+
         IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.account_circle),
+          onPressed: () async {
+            List<Location> locations = await locationFromAddress("Arapiraca");
+            LatLng position = LatLng(locations[0].latitude, locations[0].longitude);
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return GoogleMapsPage(position: position);
+                },
+              ),
+            );
+          },
+          icon: Icon(Icons.map),
           color: Color(0xFFc77b44),
         )
       ],
