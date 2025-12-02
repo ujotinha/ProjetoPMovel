@@ -5,6 +5,10 @@ import 'package:projetointheirskin/domain/infoMedicamentos.dart';
 import 'package:projetointheirskin/widgets/CardMedicamento.dart';
 import '../db/medicamento_dao.dart';
 import '../domain/infoClima.dart';
+import 'package:projetointheirskin/pages/google_maps.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 
 class AutocuidadoMedicamentos extends StatefulWidget {
   const AutocuidadoMedicamentos({super.key});
@@ -106,6 +110,22 @@ class _AutocuidadoMedicamentosState extends State<AutocuidadoMedicamentos> {
                             return Container();
                           }
                           ),
+                    ),
+                    TextButton(
+                        onPressed: () async{
+                          List<Location> locations = await locationFromAddress("Juazeiro do Norte");
+                          LatLng position = LatLng(locations[0].latitude, locations[0].longitude);
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return GoogleMapsPage(position: position);
+                              },
+                            ),
+                          );
+                        },
+                        child: Text("Ver mapa", style: TextStyle(color: Color(0xFFa5591f)),),
                     )
                   ],
                 ),
