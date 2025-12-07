@@ -17,27 +17,88 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10.0),
-      color: Color(0xFFe7ddc9),
-      height: double.infinity,
-      width: double.infinity,
-      child: Column(
-        children: [
-          Row(
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          padding: EdgeInsets.all(20.0),
+          color: Color(0xFFe7ddc9),
+          height: double.infinity,
+          width: double.infinity,
+          child: Column(
             children: [
-              Text("Login page")
+              Row(
+                children: [
+                  Text("Entrar", style: TextStyle(fontSize: 15),)
+                ],
+              ),
+              SizedBox(height: 20,),
+              Container(
+                padding: EdgeInsets.all(10),
+                height: 500,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Color(0xFFf0e6d4), borderRadius: BorderRadius.circular(20)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text("Usuário:"),
+                      ],
+                    ),
+                    SizedBox(height: 12,),
+                    TextField(
+                      controller: userController,
+                      decoration: InputDecoration(
+                        hintText: 'Usuário',
+                        focusedBorder: buildUserOutlineInputBorder(),
+                        border: buildUserOutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text("Senha:"),
+                      ],
+                    ),
+                    SizedBox(height: 12,),
+                    TextField(
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        hintText: 'Senha',
+                        focusedBorder: buildPasswordOutlineInputBorder(),
+                        border: buildPasswordOutlineInputBorder(),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              /*SizedBox(
+                child: ElevatedButton(onPressed: onPressed, child: Text('Entrar')),
+              )*/
             ],
           ),
-          Container(
-            color: Color(0xFFf0e6d4),
-            height: 200,
-            width: 200,
-          ),
-          /*SizedBox(
-            child: ElevatedButton(onPressed: onPressed, child: Text('Entrar')),
-          )*/
-        ],
+        ),
+      ),
+    );
+  }
+
+  OutlineInputBorder buildPasswordOutlineInputBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey),
+      borderRadius: BorderRadius.vertical(
+        bottom: Radius.circular(8),
+      ),
+    );
+  }
+
+  OutlineInputBorder buildUserOutlineInputBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey),
+      borderRadius: BorderRadius.vertical(
+        top: Radius.circular(8),
       ),
     );
   }
