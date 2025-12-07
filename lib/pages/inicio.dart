@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projetointheirskin/pages/login_page.dart';
 
 class Inicio extends StatefulWidget {
   const Inicio({super.key});
@@ -53,7 +54,9 @@ class _InicioState extends State<Inicio> {
                           width: double.infinity,
                           height: 30,
                           child: ElevatedButton(
-                            onPressed: () => {},
+                            onPressed: () => {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()))
+                            },
                             child: Text("Entrar"),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFFa5591f),
