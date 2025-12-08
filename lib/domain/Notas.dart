@@ -1,17 +1,17 @@
-class NotaDiario {
+class Notas {
   late String nome_Nota;
   late String Data_Escrita;
   late String Dia;
   late String Conteudo;
 
-  NotaDiario({
+  Notas({
     required this.nome_Nota,
     required this.Data_Escrita,
     required this.Dia,
     required this.Conteudo,
   });
 
-  NotaDiario.fromJson(Map<String, dynamic> json) {
+  Notas.fromJson(Map<String, dynamic> json) {
     nome_Nota = json['nomeNota'];
     Data_Escrita = json['dt_escrita'];
     Dia = json['dia'];

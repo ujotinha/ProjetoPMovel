@@ -42,6 +42,7 @@ dependencies:
   path:
   shared_preferences:
   dio:
+  provider:
 
 dev_dependencies:
   flutter_test:

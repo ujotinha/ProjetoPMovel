@@ -1,12 +1,12 @@
-import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:projetointheirskin/domain/Notas.dart';
 import 'package:dio/dio.dart';
 
 class NotasApi {
   final dio = Dio();
   String baseUrl = 'https://my-json-server.typicode.com/ujotinha/fakeAPI';
 
-  Future<List<NotaDiario>> findAll() async {
-    List<NotaDiario> listaNotas = [];
+  Future<List<Notas>> findAll() async {
+    List<Notas> listaNotas = [];
 
     final response = await dio.get('$baseUrl/properties');
     print(response);
@@ -15,7 +15,7 @@ class NotasApi {
       var result = response.data;
 
       for (var json in result) {
-        NotaDiario notas = NotaDiario.fromJson(json);
+        Notas notas = Notas.fromJson(json);
         listaNotas.add(notas);
       }
     }

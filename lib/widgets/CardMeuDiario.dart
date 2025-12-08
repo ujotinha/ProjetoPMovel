@@ -1,10 +1,10 @@
-import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:projetointheirskin/domain/Notas.dart';
 import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CardMeuDiario extends StatefulWidget {
-  NotaDiario notas;
+  Notas notas;
 
   CardMeuDiario({
     required this.notas,
@@ -16,7 +16,7 @@ class CardMeuDiario extends StatefulWidget {
 }
 
 class _CardMeuDiarioState extends State<CardMeuDiario> {
-  NotaDiario get notas => widget.notas;
+  Notas get notas => widget.notas;
 
   @override
   void initState() {

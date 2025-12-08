@@ -1,34 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/api/Notas_api.dart';
-import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:provider/provider.dart';
 import 'package:projetointheirskin/pages/anotacao.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/widgets/CardMeuDiario.dart';
-
+import 'package:projetointheirskin/domain/Notas.dart';
+import 'package:projetointheirskin/providers/notas_provider.dart';
 
 class MeuDiario extends StatefulWidget {
-
-  MeuDiario({
-    super.key
-  });
+  const MeuDiario({super.key});
 
   @override
   State<MeuDiario> createState() => _MeuDiarioState();
 }
 
 class _MeuDiarioState extends State<MeuDiario> {
-  late Future<List<NotaDiario>> futureListaNotas;
 
   @override
   void initState() {
     super.initState();
-    loadData();
-  }
-
-  loadData() async {
-    futureListaNotas = NotasApi().findAll();
-    setState(() {});
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<NotasProvider>(context, listen: false).fetchNotas();
+    });
   }
 
   @override
@@ -96,14 +89,17 @@ class _MeuDiarioState extends State<MeuDiario> {
                   ],
                 ),
                 Expanded(
-                  child: FutureBuilder<List<NotaDiario>>(
-                    future: futureListaNotas,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        List<NotaDiario> lista = snapshot.requireData;
-                        return buildListView(lista);
+                  child: Consumer<NotasProvider>(
+                    builder: (context, notasProvider, child) {
+                      if (notasProvider.isLoading) {
+                        return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f)));
                       }
-                      return Center(child: CircularProgressIndicator(color: Color(0xFFa5591f),));
+
+                      if (notasProvider.notas.isEmpty) {
+                        return Center(child: Text("Nenhuma anotação encontrada."));
+                      }
+
+                      return buildListView(notasProvider.notas);
                     },
                   ),
                 )
@@ -116,10 +112,10 @@ class _MeuDiarioState extends State<MeuDiario> {
       backgroundColor: Color(0xFFa5591f),
       onPressed: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
+            context,
+            MaterialPageRoute(
               builder: (context) => Anotacao(),
-        ));
+            ));
       },
       shape: CircleBorder(),
       child: Icon(
@@ -129,12 +125,12 @@ class _MeuDiarioState extends State<MeuDiario> {
     );
   }
 
-  buildListView(List<NotaDiario> listaNotas) {
-    return  ListView.builder(
-        itemCount: listaNotas.length,
-        itemBuilder: (context, i) {
-          return CardMeuDiario(notas: listaNotas[i],);
-        },
+  buildListView(List<Notas> listaNotas) {
+    return ListView.builder(
+      itemCount: listaNotas.length,
+      itemBuilder: (context, i) {
+        return CardMeuDiario(notas: listaNotas[i]);
+      },
     );
   }
 }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:projetointheirskin/domain/NotaMeuDiario.dart';
+import 'package:provider/provider.dart';
+import 'package:projetointheirskin/domain/Notas.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projetointheirskin/widgets/CardAnotacao.dart';
+import 'package:projetointheirskin/providers/notas_provider.dart';
 
 class Anotacao extends StatefulWidget {
-  NotaDiario ?notas;
+  final Notas? notas;
 
-  Anotacao({
+  const Anotacao({
     this.notas,
     super.key,
   });
@@ -16,11 +18,25 @@ class Anotacao extends StatefulWidget {
 }
 
 class _AnotacaoState extends State<Anotacao> {
-  NotaDiario? get notas => widget.notas;
+  late TextEditingController _tituloController;
+  late TextEditingController _conteudoController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tituloController = TextEditingController(text: widget.notas?.nome_Nota ?? "");
+    _conteudoController = TextEditingController(text: widget.notas?.Conteudo ?? "");
+  }
+
+  @override
+  void dispose() {
+    _tituloController.dispose();
+    _conteudoController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFFe7ddc9),
@@ -64,16 +80,21 @@ class _AnotacaoState extends State<Anotacao> {
             height: double.infinity,
             width: double.infinity,
             child:
-            Expanded(
-              child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (context, i) {
-                  return CardAnotacao(notas: notas);
-                },
-              ),
+            Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    children: [
+                      CardAnotacao(
+                        tituloController: _tituloController,
+                        conteudoController: _conteudoController,
+                      )
+                    ],
+                  ),
+                ),
+              ],
             )
-
-            ));
+        ));
   }
 
   buildFloatingActionButton() {
@@ -84,9 +105,7 @@ class _AnotacaoState extends State<Anotacao> {
           height: 30,
           child: FloatingActionButton(
             backgroundColor: Color(0xFFa5591f),
-            onPressed: () {
-
-            },
+            onPressed: _salvarNota,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
             ),
@@ -101,5 +120,26 @@ class _AnotacaoState extends State<Anotacao> {
             ),
           ),
         ));
+  }
+
+  void _salvarNota() {
+    final provider = Provider.of<NotasProvider>(context, listen: false);
+    final agora = DateTime.now();
+
+    if (widget.notas != null) {
+      widget.notas!.nome_Nota = _tituloController.text;
+      widget.notas!.Conteudo = _conteudoController.text;
+      provider.salvarNota(widget.notas!);
+    } else {
+      Notas novaNota = Notas(
+        nome_Nota: _tituloController.text,
+        Conteudo: _conteudoController.text,
+        Data_Escrita: "${agora.day}/${agora.month}/${agora.year}",
+        Dia: "Hoje",
+      );
+      provider.salvarNota(novaNota);
+    }
+
+    Navigator.pop(context);
   }
 }
