@@ -3,6 +3,9 @@ import 'package:projetointheirskin/db/shared_prefs.dart';
 import 'package:projetointheirskin/pages/home_page.dart';
 import 'package:projetointheirskin/domain/Usuario.dart';
 import 'package:projetointheirskin/api/usuarios_api.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/profile_provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -75,9 +78,9 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              /*SizedBox(
+              SizedBox(
                 child: ElevatedButton(onPressed: onPressed, child: Text('Entrar')),
-              )*/
+              )
             ],
           ),
         ),
@@ -103,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  /*Future<void> onPressed() async {
+  Future<void> onPressed() async {
     String username = userController.text;
     String password = passwordController.text;
 
@@ -111,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (user != null) {
       // SharedPrefs().setUserStatus(user.id);
-      SharedPrefs().setUserStatus(user.id)
+      SharedPrefs().setUserStatus(user.id);
       ProfileProvider provider = context.read<ProfileProvider>();
       provider.setUser(user);
 
@@ -127,5 +130,4 @@ class _LoginPageState extends State<LoginPage> {
       print('Usuario e/ou senha incorretos!');
     }
   }
-*/
 }

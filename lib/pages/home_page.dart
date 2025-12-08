@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projetointheirskin/pages/autocuidado.dart';
+import 'package:projetointheirskin/pages/inicio.dart';
+import 'package:projetointheirskin/pages/pacientes.dart';
 import 'package:projetointheirskin/pages/pesquisa.dart';
 
 class Homepage extends StatefulWidget {
@@ -14,7 +16,7 @@ class _HomepageState extends State<Homepage> {
   var pages = [
     Autocuidado(),
     Pesquisa(),
-    Pesquisa(),
+    Pacientes(),
     Pesquisa()
   ];
   @override
@@ -62,8 +64,12 @@ class _HomepageState extends State<Homepage> {
       title: Image.asset("assets/logo.png", height: 40, width: 70),
       actions: [
         IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.account_circle),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return Inicio();
+            },));
+          },
+          icon: Icon(Icons.exit_to_app),
           color: Color(0xFFc77b44),
         )
       ],

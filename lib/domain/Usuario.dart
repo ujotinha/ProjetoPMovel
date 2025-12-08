@@ -4,6 +4,8 @@ class User {
   late String imageUrl;
   late String username;
   late String password;
+  late String cpf;
+  late String datebirth;
 
   User(this.username, this.password);
 
@@ -13,6 +15,8 @@ class User {
     imageUrl = json['imageUrl'];
     username = json['username'];
     password = json['password'];
+    cpf = json['cpf'];
+    datebirth = json['datebirth'];
   }
 
   Map<String, dynamic> toJson() {

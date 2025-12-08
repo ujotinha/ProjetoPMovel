@@ -6,9 +6,9 @@ class SharedPrefs {
     instance.setInt('USER_ID', userId);
   }
 
-  Future<void> setUserStatus(bool status) async {
+  Future<void> setUserStatus(int status) async {
     SharedPreferences instance = await SharedPreferences.getInstance();
-    instance.setBool('LOGIN', status);
+    instance.setInt('LOGIN', status);
   }
 
   Future<int> getUserID() async {
@@ -18,9 +18,9 @@ class SharedPrefs {
     return userId ?? 0;
   }
 
-  Future<bool> getUserStatus() async {
+  Future<int> getUserStatus() async {
     SharedPreferences instance = await SharedPreferences.getInstance();
-    bool? status = instance.getBool('LOGIN');
-    return status ?? false;
+    int? status = instance.getInt('LOGIN');
+    return status ?? 0;
   }
 }

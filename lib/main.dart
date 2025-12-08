@@ -9,6 +9,6 @@ import 'package:projetointheirskin/providers/profile_provider.dart';
 void main() {
   runApp(MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => ProfileProvider()),],
-      child: MaterialApp(home:LoginPage()))
+      child: MaterialApp(home:Inicio(), debugShowCheckedModeBanner: false,))
   );
 }
